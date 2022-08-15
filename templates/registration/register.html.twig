@@ -6,20 +6,21 @@
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+    <div class="flex justify-center">
+        <h1 class="underline">Register</h1>
 
-    <h1 class="underline">Register</h1>
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.name) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
 
-        {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.name) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Créer votre compte</button>
-    {{ form_end(registrationForm) }}
-            <h1 class="text-xl font-bold underline">
-            testing
+            <button type="submit" class="btn">Créer votre compte</button>
+        {{ form_end(registrationForm) }}
+        <h1 class="text-xl font-bold underline">
+                testing
         </h1>
+    </div>
 {% endblock %}

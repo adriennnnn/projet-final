@@ -20,15 +20,14 @@
             <h1 class="text-3xl font-bold underline">
                 header
             </h1>
-            <ul>
-                <li><a href="">Accueil </a></li>
-                <li><a href="">A propos de </a></li>
+            <ul class="flex justify-end">
+                <li class="mx-8"><a href="">Accueil </a></li>
+                <li class="mx-8"><a href="">A propos de </a></li>
                 {% if app.user %}
-                <li><a href="">Profile</a></li>
-
+                <li class="mx-8"><a href="">Profile</a></li>
                 {% endif %}
                 {% if not app.user %}
-                     <li>
+                     <li class="mx-8">
                         <a target="_self" href="{{ path('app_login') }}">
                             <span>connexion</span>
                         </a>
@@ -36,7 +35,7 @@
                 {% else %}
                         <li>
                             <span>{{ app.user.userIdentifier }}</span>
-                        <li>
+                        <li class="mx-8">
                            <a target="_self" href="{{path('app_logout')}}">
                                 <span>deconexion</span>
                             </a>
