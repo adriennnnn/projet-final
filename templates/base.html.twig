@@ -17,17 +17,19 @@
     </head>
     <body>
         <header class="bg-white">
-            <h1 class="text-3xl font-bold underline">
-                header
-            </h1>
+            <div class="pt-6">
+                <h1 class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                    GlobalMarket
+                </h1>
+            </div>
             <ul class="flex justify-end">
-                <li class="mx-8"><a href="">Accueil </a></li>
-                <li class="mx-8"><a href="">A propos de </a></li>
+                <li class="mx-8 mb-5"><a href="">Accueil </a></li>
+                <li class="mx-8 mb-5"><a href="">A propos de </a></li>
                 {% if app.user %}
-                <li class="mx-8"><a href="">Profile</a></li>
+                <li class="mx-8 mb-5"><a href="">Profile</a></li>
                 {% endif %}
                 {% if not app.user %}
-                     <li class="mx-8">
+                     <li class="mx-8 mb-5">
                         <a target="_self" href="{{ path('app_login') }}">
                             <span>connexion</span>
                         </a>
@@ -47,9 +49,9 @@
 
         <footer class="p-4 bg-white sm:p-6 dark:bg-gray-900">
             <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
+                <div class="mb-6 md:mb-0 tmp">
                     <a href="{{ path('app_homepage')}}" class="flex items-center">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-8" alt="FlowBite Logo" />
+                        <img src="../asset/image/logotmp.png" class="mr-3 h-8" alt="Logo de GM" />
                         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">GlobalMarket</span>
                     </a>
                 </div>
@@ -58,7 +60,7 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
                         <ul class="text-gray-600 dark:text-gray-400">
                             <li class="mb-4">
-                                <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+                                <a href="https://adriennnnn.github.io/portfolio/" class="hover:underline">Portfolio</a>
                             </li>
                             <li>
                                 <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
