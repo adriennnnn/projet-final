@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+    {# {{ form_widget(form) }} #}
+    {{ form_row(form.companyDescription) }}
+    {{ form_row(form.companyName) }}
+    {{ form_row(form.siretNumber) }}
+    {{ form_row(form.userId, {userId})
+     }}
+
+
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
