@@ -16,10 +16,9 @@ class CompanyType extends AbstractType
             ->add('companyName')
             ->add('siretNumber')
             ->add('companyDescription')
-            ->add('userId'
-            // ,
-            //  null, ['attr' => ['value' => 2 ]] 
-             )
+            // ->add('userId'
+            // ,['attr' => ['empty_data' => '{{app.user.id}}']]
+            //  )
         ;
     }
 

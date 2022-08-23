@@ -3,11 +3,11 @@
     {{ form_row(form.companyDescription) }}
     {{ form_row(form.companyName) }}
     {{ form_row(form.siretNumber) }}
-    {{ form_row(form.userId)
+    {# {{ form_row(form.userId, )
     
-    }}
-
-
+    }} #}
+    <p>{{app.user.userIdentifier}}</p>
+    <p>{{app.user.id}}</p>
 
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
