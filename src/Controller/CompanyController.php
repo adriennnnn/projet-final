@@ -6,6 +6,8 @@ use App\Entity\User;
 use App\Entity\Company;
 use App\Form\CompanyType;
 use App\Repository\CompanyRepository;
+use App\Repository\UserRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,12 +22,20 @@ class CompanyController extends AbstractController
     /** 
      * @Route("/", name="app_company_index", methods={"GET"})
      */
-    public function index(CompanyRepository $companyRepository): Response
+    public function index(CompanyRepository $companyRepository, UserRepository $userRepository , Request $request): Response
     {
         // $company->setUserId($this->getUserId());
         // var_dump($this->getUserId());
+        $id = $request->get('id');
+        $user = $userRepository->findOneBy(['id' => $id]);
+        $products = $user->getCompanies();
+
         return $this->render('company/index.html.twig', [
-            'companies' => $companyRepository->findAll(),
+            // 'companies' => $companyRepository->findAll(),
+            // 'companies' => $companyRepository->findBy(array( 'id' => $company->getId())),
+            'companies' => $products,
+
+
         ]);
         
     }
@@ -42,7 +52,7 @@ class CompanyController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $company->setUserId($this->getuser());
+            $company->setUserId($this->getUser());
             $companyRepository->add($company, true);
             
             return $this->redirectToRoute('app_company_index', [], Response::HTTP_SEE_OTHER);
@@ -96,4 +106,7 @@ class CompanyController extends AbstractController
         return $this->redirectToRoute('app_company_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+
+
+
 

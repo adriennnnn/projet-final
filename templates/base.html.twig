@@ -35,6 +35,11 @@
                             <span>connexion</span>
                         </a>
                      </li>
+                     <li class="mx-8 mb-5">
+                        <a target="_self" href="{{ path('app_register') }}">
+                            <span>créer un compte</span>
+                        </a>
+                     </li>
                 {% else %}
                         <li>
                             <span>{{ app.user.userIdentifier }}</span>
