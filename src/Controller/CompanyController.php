@@ -26,22 +26,25 @@ class CompanyController extends AbstractController
     {
         // $company->setUserId($this->getUserId());
         // var_dump($this->getUserId());
-        $id = $request->get('id');
+        
+        // $id = $request->getUser('id');
+        $id = $this->getUser();
         $user = $userRepository->findOneBy(['id' => $id]);
-        $products = $user->getCompanies();
+        // dd($user);
+        $companyByUser = $user->getCompanies();
+        
 
         return $this->render('company/index.html.twig', [
             // 'companies' => $companyRepository->findAll(),
             // 'companies' => $companyRepository->findBy(array( 'id' => $company->getId())),
-            'companies' => $products,
-
+            'companies' => $companyByUser,
 
         ]);
         
     }
 
     /**
-     * @Route("/new", name="app_company_new", methods={"GET", "POST"})
+     * @Route("/new", name="app_company_new", methods={"GET", "POST"})  
      */
     public function new(Request $request, CompanyRepository $companyRepository): Response
     {
