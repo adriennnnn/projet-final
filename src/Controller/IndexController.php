@@ -15,6 +15,7 @@ class IndexController extends AbstractController
     {
         return $this->render('index/index.html.twig', [
             'controller_name' => 'IndexController',
+            // penser a ajouter les render pour pouvoir afficher les info des company et showcase
         ]);
     }
 }

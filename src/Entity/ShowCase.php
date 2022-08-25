@@ -33,6 +33,8 @@ class ShowCase
      */
     private $companyId;
 
+ 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,4 +75,6 @@ class ShowCase
 
         return $this;
     }
+
+   
 }

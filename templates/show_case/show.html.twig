@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ShowCase{% endblock %}
+
+{% block body %}
+    <h1>ShowCase</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ show_case.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ show_case.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ show_case.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_show_case_index') }}">back to list</a>
+
+    <a href="{{ path('app_show_case_edit', {'id': show_case.id}) }}">edit</a>
+
+    {{ include('show_case/_delete_form.html.twig') }}
+{% endblock %}
