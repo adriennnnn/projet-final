@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\ShowCase;
+use App\Entity\Company;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +16,11 @@ class ShowCaseType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('companyId' )
+            // ->add('companyId' )
+            ->add('company', EntityType::class, [
+                'class' => User::class,
+                'choices' => $showCase->getCompany(),
+            ]);
 
         ;
     }

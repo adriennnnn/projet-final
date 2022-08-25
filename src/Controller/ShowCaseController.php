@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Company;
+use App\Repository\CompanyRepository;
 
 use App\Entity\ShowCase;
 use App\Form\ShowCaseType;
@@ -21,8 +22,14 @@ class ShowCaseController extends AbstractController
     /**
      * @Route("/", name="app_show_case_index", methods={"GET"})
      */
-    public function index(ShowCaseRepository $showCaseRepository): Response
+    public function index(ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository): Response
     {
+        $id = $this->getCompany();
+        $user = $companyRepository->findOneBy(['id' => $id]);
+        // dd($user);
+        $companyByUser = $user->getCompanies();
+
+
         return $this->render('show_case/index.html.twig', [
             'show_cases' => $showCaseRepository->findAll(),
         ]);
@@ -31,11 +38,12 @@ class ShowCaseController extends AbstractController
     /**
      * @Route("/new", name="app_show_case_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, ShowCaseRepository $showCaseRepository): Response
+    public function new(Request $request, ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository): Response
     {
         $showCase = new ShowCase();
         $form = $this->createForm(ShowCaseType::class, $showCase);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -47,6 +55,7 @@ class ShowCaseController extends AbstractController
 
         return $this->renderForm('show_case/new.html.twig', [
             'show_case' => $showCase,
+            'company' => $companyRepository->findAll(),
             'form' => $form,
         ]);
     }

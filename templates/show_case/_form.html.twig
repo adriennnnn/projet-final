@@ -1,14 +1,20 @@
 {{ form_start(form) }}
 
 
-    {{ form_row(form.title) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.companyId, {"attr": {'value': app.comapny.name}}
-    ) }}
-     {{ form_row(form.companyId)}}
+    {{ form_row(form.title, {'label':'Titre ', 'attr': {'placeholder': 'Nom de votre magasin'}}) }}
+    {{ form_row(form.description, {'label':'Description ', 'attr': {'placeholder': 'Presentation general de votre boutique'}}) }}
+    {# {{ form_row(form.companyId, {"attr": {'value': app.company.name}}
+    ) }} #}
+     {{ form_row(form.company)}}
     {# <p>{{app.company.name}}</p> #}
 
+
+
     {# {{ form_widget(form) }} #}
+    {# <p>{{app.company}}</p> #}
+    <p>{{app.user.userIdentifier}}</p>
+
+    <p>{{app.user.id}}</p>
     
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
