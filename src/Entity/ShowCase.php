@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ShowCaseRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=ShowCaseRepository::class)
  */

@@ -24,10 +24,9 @@ class ShowCaseController extends AbstractController
      */
     public function index(ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository): Response
     {
-        $id = $this->getCompany();
-        $user = $companyRepository->findOneBy(['id' => $id]);
-        // dd($user);
-        $companyByUser = $user->getCompanies();
+        // $id = $this->getCompany();
+        // $user = $companyRepository->findOneBy(['id' => $id]);
+        // $companyByUser = $user->getCompanies();
 
 
         return $this->render('show_case/index.html.twig', [

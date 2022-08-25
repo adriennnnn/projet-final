@@ -17,10 +17,11 @@ class ShowCaseType extends AbstractType
             ->add('title')
             ->add('description')
             // ->add('companyId' )
-            ->add('company', EntityType::class, [
-                'class' => User::class,
-                'choices' => $showCase->getCompany(),
-            ]);
+            // ->add('company', EntityType::class, [
+            //     'class' => User::class,
+            //     'choices' => $showCase->getCompany(),
+            // ]);
+            ->add('companyId')
 
         ;
     }

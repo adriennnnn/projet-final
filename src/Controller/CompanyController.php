@@ -35,7 +35,7 @@ class CompanyController extends AbstractController
         
 
         return $this->render('company/index.html.twig', [
-            // 'companies' => $companyRepository->findAll(),
+            'companies' => $companyRepository->findAll(),
             // 'companies' => $companyRepository->findBy(array( 'id' => $company->getId())),
             'companies' => $companyByUser,
 
