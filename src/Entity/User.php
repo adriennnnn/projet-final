@@ -58,10 +58,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $companies;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ShowCase::class, mappedBy="userId", orphanRemoval=true)
+     */
+    private $showCases;
+
 
     public function __construct()
     {
         $this->companies = new ArrayCollection();
+        $this->showCases = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -211,6 +217,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString(): string
     {
         return $this->id;
+    }
+
+    /**
+     * @return Collection<int, ShowCase>
+     */
+    public function getShowCases(): Collection
+    {
+        return $this->showCases;
+    }
+
+    public function addShowCase(ShowCase $showCase): self
+    {
+        if (!$this->showCases->contains($showCase)) {
+            $this->showCases[] = $showCase;
+            $showCase->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShowCase(ShowCase $showCase): self
+    {
+        if ($this->showCases->removeElement($showCase)) {
+            // set the owning side to null (unless already changed)
+            if ($showCase->getUserId() === $this) {
+                $showCase->setUserId(null);
+            }
+        }
+
+        return $this;
     }
 
 }

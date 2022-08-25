@@ -33,6 +33,12 @@ class ShowCase
      */
     private $companyId;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="showCases")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $userId;
+
  
 
     public function getId(): ?int
@@ -72,6 +78,18 @@ class ShowCase
     public function setCompanyId(?Company $companyId): self
     {
         $this->companyId = $companyId;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?User $userId): self
+    {
+        $this->userId = $userId;
 
         return $this;
     }

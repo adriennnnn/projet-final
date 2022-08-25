@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Entity\Company;
+
 use App\Entity\ShowCase;
 use App\Form\ShowCaseType;
 use App\Repository\ShowCaseRepository;
@@ -35,6 +38,8 @@ class ShowCaseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $showCase->setUserId($this->getUser());
             $showCaseRepository->add($showCase, true);
 
             return $this->redirectToRoute('app_show_case_index', [], Response::HTTP_SEE_OTHER);

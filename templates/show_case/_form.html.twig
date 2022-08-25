@@ -3,9 +3,10 @@
 
     {{ form_row(form.title) }}
     {{ form_row(form.description) }}
-    {# {{ form_row(form.companyId, {"attr": {'value': app.comapnyName}}
-    ) }} #}
-    <p>{{app.company.name}}</p>
+    {{ form_row(form.companyId, {"attr": {'value': app.comapny.name}}
+    ) }}
+     {{ form_row(form.companyId)}}
+    {# <p>{{app.company.name}}</p> #}
 
     {# {{ form_widget(form) }} #}
     
