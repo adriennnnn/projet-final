@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Company;
+use App\Entity\ImageShowCase;
 use App\Repository\CompanyRepository;
 
 use App\Entity\ShowCase;
@@ -24,9 +25,9 @@ class ShowCaseController extends AbstractController
      */
     public function index(ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository): Response
     {
-        // $id = $this->getCompany();
-        // $user = $companyRepository->findOneBy(['id' => $id]);
-        // $companyByUser = $user->getCompanies();
+        $id = $this->getUser();
+        $user = $companyRepository->findOneBy(['id' => $id]);
+        $companyByUser = $user->getCompanies();
 
 
         return $this->render('show_case/index.html.twig', [
@@ -45,6 +46,23 @@ class ShowCaseController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //On recupère les images transmises 
+            $images = $form->get('images')->getData();
+            // on bouclz les images
+            foreach($images as $image){
+                //pour changer le nom des ficher et eviter les doublpn
+                $ficher = md5(uniqid()) . '.' . $image->guessExtension();
+                //Pui on copier le ficher dans uploads de public(dossier)
+                $image->move(
+                    $this->getParameter('images_path'),
+                    $ficher
+                );
+                //on enregistre le nom de l'img dans la bdd
+                $img = new ImageShowCase();
+                $img->setImage($ficher);
+                $showCase->addImageShowCase($img);
+
+            }
 
             $showCase->setUserId($this->getUser());
             $showCaseRepository->add($showCase, true);
