@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Assert\Lenght;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * 
@@ -41,8 +43,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
-
+    
     private $plainPassword;
+
+    // private $confirm_password;
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -62,6 +66,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=ShowCase::class, mappedBy="userId", orphanRemoval=true)
      */
     private $showCases;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $surname;
 
 
     public function __construct()
@@ -245,6 +254,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $showCase->setUserId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname): self
+    {
+        $this->surname = $surname;
 
         return $this;
     }

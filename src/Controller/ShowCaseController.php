@@ -4,16 +4,17 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Company;
-use App\Entity\ImageShowCase;
-use App\Repository\CompanyRepository;
-
 use App\Entity\ShowCase;
 use App\Form\ShowCaseType;
+
+use App\Entity\ImageShowCase;
+use App\Repository\UserRepository;
+use App\Repository\CompanyRepository;
 use App\Repository\ShowCaseRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/showcase")
@@ -23,15 +24,17 @@ class ShowCaseController extends AbstractController
     /**
      * @Route("/", name="app_show_case_index", methods={"GET"})
      */
-    public function index(ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository): Response
+    public function index(ShowCaseRepository $showCaseRepository, UserRepository $userRepository): Response
     {
         $id = $this->getUser();
-        $user = $companyRepository->findOneBy(['id' => $id]);
-        $companyByUser = $user->getCompanies();
+        $user = $userRepository->findOneBy(['id' => $id]);
+        $showcaseByUser = $user->getShowCases();
 
 
         return $this->render('show_case/index.html.twig', [
             'show_cases' => $showCaseRepository->findAll(),
+            'show_cases' => $showcaseByUser,
+
         ]);
     }
 
