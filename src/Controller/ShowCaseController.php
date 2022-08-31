@@ -49,7 +49,6 @@ class ShowCaseController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             
             //On recupère les images transmises 
             $images = $form->get('images')->getData();

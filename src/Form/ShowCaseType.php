@@ -17,6 +17,8 @@ class ShowCaseType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
+            ->add('categories')
+
             // ->add('companyId' )
             // ->add('company', EntityType::class, [
             //     'class' => User::class,
