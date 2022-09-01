@@ -19,7 +19,7 @@ class ShowCaseType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('categories', EntityType::class, [
+            ->add('categorys', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'multiple' => true

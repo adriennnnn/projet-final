@@ -7,16 +7,11 @@
     ) }} #}
      {{ form_row(form.companyId, {'label':"selection l'entreprise associer ", 'attr': {'placeholder': 'liste des entreprise inscrite'}})}}
     {{ form_row(form.images)}}
+    {{ form_row(form.categorys)}}
 
-    {# <p>{{app.company.name}}</p> #}
+    {# <p>{{app.user.userIdentifier}}</p>
 
-
-
-    {# {{ form_widget(form) }} #}
-    {# <p>{{app.company}}</p> #}
-    <p>{{app.user.userIdentifier}}</p>
-
-    <p>{{app.user.id}}</p>
+    <p>{{app.user.id}}</p> #}
     
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

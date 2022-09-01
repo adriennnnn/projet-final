@@ -50,12 +50,12 @@ class ShowCase
         /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="showcase", orphanRemoval=true, cascade={"persist"})
      */
-    private $categories;
+    private $categorys;
 
     public function __construct()
     {
         $this->imageShowCases = new ArrayCollection();
-        $this->categories = new ArrayCollection();
+        $this->categorys = new ArrayCollection();
     }
 
  
@@ -146,15 +146,15 @@ class ShowCase
     /**
      * @return Collection<int, Category>
      */
-    public function getCategories(): Collection
+    public function getcategorys(): Collection
     {
-        return $this->categories;
+        return $this->categorys;
     }
 
     public function addCategory(Category $category): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
+        if (!$this->categorys->contains($category)) {
+            $this->categorys[] = $category;
             $category->addShowCaseId($this);
         }
 
@@ -163,7 +163,7 @@ class ShowCase
 
     public function removeCategory(Category $category): self
     {
-        if ($this->categories->removeElement($category)) {
+        if ($this->categorys->removeElement($category)) {
             $category->removeShowCaseId($this);
         }
 
