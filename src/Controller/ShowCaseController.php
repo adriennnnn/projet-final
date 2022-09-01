@@ -10,6 +10,8 @@ use App\Form\ShowCaseType;
 use App\Entity\ImageShowCase;
 use App\Repository\UserRepository;
 use App\Repository\CompanyRepository;
+
+use App\Repository\CategoryRepository;
 use App\Repository\ShowCaseRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,12 +43,11 @@ class ShowCaseController extends AbstractController
     /**
      * @Route("/new", name="app_show_case_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository): Response
+    public function new(Request $request, ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository, CategoryRepository $categoryRepository ): Response
     {
         $showCase = new ShowCase();
         $form = $this->createForm(ShowCaseType::class, $showCase);
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             
@@ -73,14 +74,15 @@ class ShowCaseController extends AbstractController
 
             return $this->redirectToRoute('app_show_case_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('show_case/new.html.twig', [
             'show_case' => $showCase,
             'company' => $companyRepository->findAll(),
             'form' => $form,
+            'category' => $categoryRepository,
         ]);
     }
 
+    
     /**
      * @Route("/{id}", name="app_show_case_show", methods={"GET"})
      */

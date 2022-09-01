@@ -13,7 +13,6 @@ class CategoryCrudController extends AbstractCrudController
     {
         return Category::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {
