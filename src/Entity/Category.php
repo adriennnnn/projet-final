@@ -30,7 +30,7 @@ class Category
     private $slug;
 
     /**
-     * @ORM\ManyToMany(targetEntity=ShowCase::class, inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity=ShowCase::class, mappedBy="categories")
      */
     private $ShowCase_id;
 

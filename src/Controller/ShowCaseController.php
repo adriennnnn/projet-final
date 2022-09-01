@@ -82,7 +82,7 @@ class ShowCaseController extends AbstractController
         ]);
     }
 
-    
+
     /**
      * @Route("/{id}", name="app_show_case_show", methods={"GET"})
      */

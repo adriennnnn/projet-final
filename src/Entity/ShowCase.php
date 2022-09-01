@@ -47,8 +47,8 @@ class ShowCase
      */
     private $imageShowCases;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="ShowCase_id")
+        /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="showcase", orphanRemoval=true, cascade={"persist"})
      */
     private $categories;
 
