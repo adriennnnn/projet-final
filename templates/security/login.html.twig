@@ -10,19 +10,27 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Deconnexion</a>
         </div>
     {% endif %}
 
-    <h1 class="h1 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <div class="lg:flex justify-center my-10 ">
+        <div class="bg-white p-12 rounded-[25px]">
+            <div class="grid grid-rows-4">
+                <h1 class="h1 mb-3 font-weight-normal text-center">Connexion</h1>
+                <label for="inputEmail">Email ;</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <label for="inputPassword">Mot de passe ;</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}">
+                <button class="px-2 mt-10 bg-sky-500/100 text-white rounded-lg" type="submit">
+                    Connexion
+                </button>
+            </div>
+        </div>
+    </div>
 
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -35,8 +43,6 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+
 </form>
 {% endblock %}
