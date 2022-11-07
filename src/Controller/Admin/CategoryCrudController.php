@@ -21,7 +21,6 @@ class CategoryCrudController extends AbstractCrudController
             yield SlugField::new('slug')
                 ->setTargetFieldName('name');
 
-
     }
     
 }
