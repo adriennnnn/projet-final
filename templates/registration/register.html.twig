@@ -7,35 +7,40 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
     <div class="flex justify-center m-10">
-        <h1 class="underline">Register</h1>
-
-            <div>
-                {{ form_start(registrationForm) }}
-
-                    <ul class="grid grid-cols-2">
-                        <li> 
-                            {{ form_row(registrationForm.name, {'label':'votre ', 'attr': {'placeholder': 'Prénom'}}) }}
-                        </li>
-                        <li>
-                            {{ form_row(registrationForm.surname, {'label':'votre ', 'attr': {'placeholder': 'Nom'}}) }}      
-                        </li>
-
-
-                        
-                    </ul>
-                    {{ form_row(registrationForm.email) }}
-                    {{ form_row(registrationForm.password.first , {
-                        label: 'Password'
-                    }) }}
-                    {{ form_row(registrationForm.password.second) }}
-
-                    {{ form_row(registrationForm.agreeTerms) }}
-
-                    <button type="submit" class="btn">Créer votre compte</button>
-                {{ form_end(registrationForm) }}
+        <div class="lg:w-4/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none bg-purple-400" >
+            <div class="text-white px-4 py-6 md:p-12 md:mx-6">
+                <h2 class="text-xl font-semibold mb-6">Vous avez deja un compte ?</h2>
+                <a target="_self" href="{{ path('app_login')}}" class=" w-full text-sm text-gray-50 border-solid border-2 border-gray-50">
+                conecter-vous
+                </a>
             </div>
-        <h1 class="text-xl font-bold underline">
-                testing
-        </h1>
+        </div>
+        <div class="lg:w-6/12 flex bg-white">
+            <div class="grid md:p-12 md:mx-6 w-full">
+
+                <h2 class="text-xl font-semibold mb-6">Inscription</h2>
+
+                <div>
+                    {{ form_start(registrationForm) }}
+                        <ul class="grid grid-cols-2">
+                            <li> 
+                                {{ form_row(registrationForm.name, {'label':'votre ', 'attr': {'placeholder': 'Prénom'}}) }}
+                            </li>
+                            <li>
+                                {{ form_row(registrationForm.surname, {'label':'votre ', 'attr': {'placeholder': 'Nom'}}) }}      
+                            </li>                        
+                        </ul>
+                        {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.password.first , {label: 'Password'}) }}
+                        {{ form_row(registrationForm.password.second) }}
+                        {{ form_row(registrationForm.agreeTerms) }}
+                        <button type="submit" class=" w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">Créer votre compte</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
+
+
+  

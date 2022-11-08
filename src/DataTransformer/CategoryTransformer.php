@@ -54,7 +54,6 @@ class CategoryTransformer implements DataTransformerInterface
             $searchCategory[] = $category;
         }
 
-        
         // $arrayCategoryName = [];
         // foreach ($arrayOfString as $string) {
         //       $withoutSpace = trim($string);

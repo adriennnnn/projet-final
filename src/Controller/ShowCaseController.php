@@ -38,6 +38,7 @@ class ShowCaseController extends AbstractController
             'show_cases' => $showcaseByUser,
 
         ]);
+
     }
 
     /**

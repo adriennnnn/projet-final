@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ShowCase;
+use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
 use App\Repository\ShowCaseRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function index(ShowCaseRepository $showCaseRepository, UserRepository $userRepository): Response
+    public function index(ShowCaseRepository $showCaseRepository, UserRepository $userRepository, CategoryRepository $categoryRepositoru): Response
     {
         // $id = $this->getUser();
         // $user = $userRepository->findOneBy(['id' => $id]);
@@ -23,14 +24,16 @@ class IndexController extends AbstractController
         return $this->render('index/index.html.twig', [
             'controller_name' => 'IndexController',
             // penser a ajouter les render pour pouvoir afficher les info des company et showcase
+            'show_cases' => $showCaseRepository->findAll(),
+            'categories' => $categoryRepositoru
+            // 'show_cases' => $showcaseByUser,
 
         ]);
         // return $this->render('show_case/index.html.twig', [
-        //     'show_cases' => $showCaseRepository->findAll(),
-        //     'show_cases' => $showcaseByUser,
     
         // ]);
     }
+
     
 
 }

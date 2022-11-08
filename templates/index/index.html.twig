@@ -8,25 +8,40 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
     <div class="">
-            {# {% for show_case_category in categories %} #}
 
             <ul class="bg-gray-50 border-solid border-y-2 border-slate-100 px-10 pb-[3px] pt-[5px]" >
-                {# <li class=="">{{ show_case_category.name }} </li> #}
-                <li class="inline-block px-2 py-[1px] border-solid border-2 border-gay-900 rounded-lg "><a href="#"> test
-                {# {{ show_case_category.name }} #}
-                </a>
+            {% for show_case_category in categories %}
+                <li class="inline-block px-2 py-[1px] border-solid border-2 border-gay-900 rounded-lg "> test
+                {{ show_case_category }}
+
                 </li>
-                {# <li class="inline-block"> test deux</li>
-                <li class="inline-block"> test trois</li> #}
+
+    {% endfor %}
             </ul>
 
-    {# {% endfor %} #}
-
+    </div>
+    <div>
+        {% for show_case in show_cases %}
+            <tr>
+                <td>{{ show_case.id }}</td>
+                <td>{{ show_case.title }}</td>
+                <td>{{ show_case.description }}</td>
+                <td>
+                    <a href="{{ path('app_show_case_show', {'id': show_case.id}) }}">show</a>
+                    <a href="{{ path('app_show_case_edit', {'id': show_case.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
     </div>
 
     <div>
         <h1 class="text-white flex justify-center text-4xl mt-10 mb-5 font-bold">Bienvenue sur GlobalMarket</h1>
         <p class="text-white flex justify-center mb-20">votre référant des commerces et vendeurs de detaille en tous genres autour de chez vous</p>
+
     </div>
 
 
