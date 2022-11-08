@@ -36,11 +36,23 @@ class CategoryTransformer implements DataTransformerInterface
      */
     public function reverseTransform($categorysString)
     {
-
-        $string = trim($categorysString);
-        $arrayOfString = array_unique(explode(', ',$string));
         // $arrayOfComa = array_unique(explode(' ,',$string));
         // $truearray = array_merge($arrayOfComa, $arrayOfString);
+        $cleanCategories  = array_filter(array_unique(array_map('trim',explode(",", $categorysString))));
+        //pour chercher les category deja enregistrer 
+        $searchCategory = $this->entityManager->getRepository(Category::class)->findBy([
+            'name' => $cleanCategories
+        ]);
+        // pour afficher ceux qui ne sont pas deja enregistrés
+        $newCategories = array_diff($cleanCategories, $searchCategory);
+        foreach ($newCategories as $newCategory) {
+            //pour enlever les majuscul
+            $newCategory = strtolower($newCategory);
+            $category = new Category();
+            $category->setName(ucwords($newCategory));
+            $category->setSlug($newCategory);
+            $searchCategory[] = $category;
+        }
 
         
         // $arrayCategoryName = [];
@@ -51,9 +63,7 @@ class CategoryTransformer implements DataTransformerInterface
         
 
         // $arrayCategoryNameEnd = str_replace($, )
-
-
-        dd(str_replace( ' ,' , '', $arrayOfString));
-        return [];
+        // dd(str_replace( ' ,' , '', $arrayOfString));
+        return $searchCategory;
     }
 }
