@@ -11,9 +11,10 @@
 
             <ul class="bg-gray-50 border-solid border-y-2 border-slate-100 px-10 pb-[3px] pt-[5px]" >
             {% for show_case_category in categories %}
-                <li class="inline-block px-2 py-[1px] border-solid border-2 border-gay-900 rounded-lg "> test
-                {{ show_case_category }}
-
+                <li class="inline-block px-2 py-[1px] border-solid border-2 border-gay-900 rounded-lg ">
+                    <a href="">
+                    {{ show_case_category|capitalize }}
+                    </a>
                 </li>
 
     {% endfor %}
@@ -26,11 +27,28 @@
                 <td>{{ show_case.id }}</td>
                 <td>{{ show_case.title }}</td>
                 <td>{{ show_case.description }}</td>
+                {# <td><image src='../public/upload/{{ show_case.imageShowCases }}'></td> #}
+
                 <td>
-                    <a href="{{ path('app_show_case_show', {'id': show_case.id}) }}">show</a>
-                    <a href="{{ path('app_show_case_edit', {'id': show_case.id}) }}">edit</a>
+                    {# <a href="{{ path('app_show_case_show', {'id': show_case.id}) }}">show</a>
+                    <a href="{{ path('app_show_case_edit', {'id': show_case.id}) }}">edit</a> #}
                 </td>
             </tr>
+            <div class="center">
+                <a href="{{ path('app_show_case_show', {'id': show_case.id}) }}" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    {% if show_case.imageShowCases.values %}
+                        <img class="object-cover rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg h-48 w-96" src="{{ asset('uploads/' ~ show_case.imageShowCases.values[0].image)}}" alt="">
+                    {% endif %}
+                    <div class="flex flex-col justify-between p-4 leading-normal">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ show_case.title }}</h5>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ show_case.description }}</p>
+                    </div>
+                </a>
+            </div>
+
+
+
+
         {% else %}
             <tr>
                 <td colspan="4">no records found</td>

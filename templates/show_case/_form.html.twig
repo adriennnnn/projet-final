@@ -1,4 +1,4 @@
-{{dump(form)}}
+{# {{dump(form)}} #}
 {{ form_start(form) }}
 
 
@@ -8,7 +8,7 @@
     ) }} #}
      {{ form_row(form.companyId, {'label':"selection l'entreprise associer ", 'attr': {'placeholder': 'liste des entreprise inscrite'}})}}
     {{ form_row(form.images)}}
-    {{ form_row(form.categorys, {''} )}}
+    {{ form_row(form.categorys)}}
 
     {# <p>{{app.user.userIdentifier}}</p>
 

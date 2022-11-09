@@ -38,7 +38,9 @@ class CategoryTransformer implements DataTransformerInterface
     {
         // $arrayOfComa = array_unique(explode(' ,',$string));
         // $truearray = array_merge($arrayOfComa, $arrayOfString);
+        $categorysString = strtolower($categorysString);
         $cleanCategories  = array_filter(array_unique(array_map('trim',explode(",", $categorysString))));
+
         //pour chercher les category deja enregistrer 
         $searchCategory = $this->entityManager->getRepository(Category::class)->findBy([
             'name' => $cleanCategories
@@ -47,10 +49,9 @@ class CategoryTransformer implements DataTransformerInterface
         $newCategories = array_diff($cleanCategories, $searchCategory);
         foreach ($newCategories as $newCategory) {
             //pour enlever les majuscul
-            $newCategory = strtolower($newCategory);
             $category = new Category();
-            $category->setName(ucwords($newCategory));
-            $category->setSlug($newCategory);
+            $category->setName($newCategory);
+            $category->setSlug(str_replace(' ', '-', $newCategory));
             $searchCategory[] = $category;
         }
 
