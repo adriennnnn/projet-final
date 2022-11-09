@@ -25,13 +25,23 @@ class IndexController extends AbstractController
             'controller_name' => 'IndexController',
             // penser a ajouter les render pour pouvoir afficher les info des company et showcase
             'show_cases' => $showCaseRepository->findAll(),
-            'categories' => $categoryRepositoru->findAll()
+            'categories' => $categoryRepositoru->findAll(),
+
             // 'show_cases' => $showcaseByUser,
 
         ]);
         // return $this->render('show_case/index.html.twig', [
     
         // ]);
+    }
+    /**
+     * @Route("/{id}", name="app_show_case_show-index", methods={"GET"})
+     */
+    public function show(ShowCase $showCase): Response
+    {
+        return $this->render('index/show-show_case.html.twig', [
+            'show_case' => $showCase,
+        ]);
     }
 
     
