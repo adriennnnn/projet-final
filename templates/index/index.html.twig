@@ -35,7 +35,7 @@ app_show_case_show-index
                 </td>
             </tr> #}
             <div class="flex justify-center mx-44 py-4">
-                <a href="{{ path('app_show_case_show-index', {'id': show_case.id}) }}" class="flex flex-col items-center bg-white w-full rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <a href="{{ path('app_show_case_show', {'id': show_case.id}) }}" class="flex flex-col items-center bg-white w-full rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     {% if show_case.imageShowCases.values %}
                         <img class="object-cover rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg h-48 w-96" src="{{ asset('uploads/' ~ show_case.imageShowCases.values[0].image)}}" alt="">
                     {% endif %}

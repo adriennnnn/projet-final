@@ -34,15 +34,6 @@ class IndexController extends AbstractController
     
         // ]);
     }
-    /**
-     * @Route("/{id}", name="app_show_case_show-index", methods={"GET"})
-     */
-    public function show(ShowCase $showCase): Response
-    {
-        return $this->render('index/show-show_case.html.twig', [
-            'show_case' => $showCase,
-        ]);
-    }
 
     
 

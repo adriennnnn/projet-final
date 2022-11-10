@@ -52,6 +52,16 @@ class ShowCase
      */
     private $categorys;
 
+    /**
+     * @ORM\Column(type="string", length=180, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=15, nullable=true)
+     */
+    private $phoneNumber;
+
     public function __construct()
     {
         $this->imageShowCases = new ArrayCollection();
@@ -166,6 +176,30 @@ class ShowCase
         if ($this->categorys->removeElement($category)) {
             $category->removeShowCaseId($this);
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }

@@ -93,6 +93,15 @@ class ShowCaseController extends AbstractController
             'show_case' => $showCase,
         ]);
     }
+    // /**
+    //  * @Route("/{id}", name="app_show_case_show", methods={"GET"})
+    //  */
+    // public function showPublic(ShowCase $showCase): Response
+    // {
+    //     return $this->render('index/show-show_case.html.twig', [
+    //         'show_case' => $showCase,
+    //     ]);
+    // }
 
     /**
      * @Route("/{id}/edit", name="app_show_case_edit", methods={"GET", "POST"})
@@ -125,4 +134,5 @@ class ShowCaseController extends AbstractController
 
         return $this->redirectToRoute('app_show_case_index', [], Response::HTTP_SEE_OTHER);
     }
+    
 }

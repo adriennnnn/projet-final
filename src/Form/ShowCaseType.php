@@ -24,6 +24,8 @@ class ShowCaseType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
+            ->add('email')
+            ->add('phoneNumber')
             ->add('categorys', CategoryType::class,[
                 'data_class' => null
             ])        
