@@ -9,29 +9,39 @@
 </style>
 
 <div>
-    {# page header #}
-    <div>
-        <h1 class="">Vous etes sur votre profil</h1>
-        <p class="">Dans cette section vous pouvez retrouver vous différant entreprise et leurs pages vitrine associer</p>
-    </div>
     {# Page body #}
-    <div>
+    <div class="bg-white m-10 grid grid-cols-12">
         {# ajouté une company #}
-        <div>
-            <h3>Consulter, creer ou editer vos fiche entreprise </h3>
-            <buttom class='cursor-pointer bg-blue-300 hover:bg-blue-400 text-slate-100 font-bold py-2 px-4 rounded inline-flex items-center'>
-                <a href="{{ path('app_company_index')  }}">consulter</a>     
-                {# <a href="{{ path('app_company_index', {'id': company.id})  }}">consulter</a>              #}
-        
-             </buttom>
+        <div class="col-span-4 p-10">
+            {# page header #}
+            <div class="">
+                <h1 class="text-xl font-semibold mb-6">Vous etes sur votre profil</h1>
+                <p class="">Dans cette section vous pouvez retrouver vos différant entreprise et leurs pages vitrine associer</p>
+                <br>
+                <p>Vous etes connectez en avec l'adresse email;</p>
+                <p class="text-purple-400">{{app.user.userIdentifier}}</p>
+            </div>
+        </div>
+        <div class="col-span-4 p-10 bg-purple-400">
+            <div class="border-solid border-2 border-purple-400 p-24 ">
+                <h3 class="text-white">Consulter, creer ou editer vos fiche entreprise </h3>
+                <buttom class='my-10 px-10 mt-10 text-white border-solid border-2 border-white'>
+                    <a href="{{ path('app_company_index')  }}">consulter</a>     
+                    {# <a href="{{ path('app_company_index', {'id': company.id})  }}">consulter</a>              #}
+            
+                </buttom>
+             </div>
         </div>
                 {# ajouté une showCase / sucursalle ou boutique #}
-        <div>
-            <h3>Consulter, creer ou editer vos vitrine</h3>
-            <buttom class='cursor-pointer bg-blue-300 hover:bg-blue-400 text-slate-100 font-bold py-2 px-4 rounded inline-flex items-center'>
-                <a href="{{ path('app_show_case_index')  }}">consulter</a>             
-             </buttom>
+        <div class="col-span-4 p-10">
+            <div>
+                <h3>Consulter, creer ou editer vos vitrine</h3>
+                <buttom class=' my-10 px-10 mt-10 text-purple-400 border-solid border-2 border-purple-400'>
+                    <a href="{{ path('app_show_case_index')  }}">consulter</a>             
+                </buttom>
+             <div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

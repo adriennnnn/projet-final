@@ -7,6 +7,7 @@ use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CompanyType extends AbstractType
 {
@@ -15,7 +16,9 @@ class CompanyType extends AbstractType
         $builder
             ->add('companyName')
             ->add('siretNumber')
-            ->add('companyDescription')
+            ->add('companyDescription', TextareaType::class, [
+                'attr' => ['class' => 'tinymce'],]
+                )
             // ->add('userId'
             // ,['attr' => ['empty_data' => '{{app.user.id}}']]
             //  )

@@ -46,10 +46,13 @@
 
             </div>
         </div>
+    {# // ajouter la condition si le user log a sont id associer au show case en question #}
 
     {% if app.user %}
-         <a href="{{ path('app_show_case_index') }}">back to list</a>
-         <a href="{{ path('app_show_case_edit', {'id': show_case.id}) }}">edit</a>
-         {{ include('show_case/_delete_form.html.twig') }}
+            {% if app.user.id == user_id %}
+                <a href="{{ path('app_show_case_index') }}">back to list</a>
+                <a href="{{ path('app_show_case_edit', {'id': show_case.id}) }}">edit</a>
+                {{ include('show_case/_delete_form.html.twig') }}
+             {% endif %}    
     {% endif %}    
 {% endblock %}

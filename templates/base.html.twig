@@ -5,11 +5,14 @@
         <title>GM - {% block title %}{% endblock %}</title>
         {# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"> #}
         <link rel="icon" href="../asset/image/logotmp.png">
+        <link rel="stylesheet" href="../style/style.css">
+
 
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href={{ asset ('../style/style.css') }}>
         {% endblock %}
 
         {% block javascripts %}
@@ -38,7 +41,7 @@
                         </a>
                      </li>
                 {% else %}
-                <li class="mx-8 mb-5"><a href="{{ path('app_profile') }}">Profile</a></li>
+                <li class="mx-8 mb-5"><a href="{{ path('app_profile') }}">Profil</a></li>
                         <li>
                             <span>{{ app.user.userIdentifier }}</span>
                         <li class="mx-8">

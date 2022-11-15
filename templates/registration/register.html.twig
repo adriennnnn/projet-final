@@ -7,7 +7,7 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
     <div class="flex justify-center m-10">
-        <div class="lg:w-4/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none bg-purple-400" >
+        <div class="lg:w-4/12 flex items-center lg:rounded-l-lg rounded-l-lg bg-purple-400" >
             <div class="text-white px-4 py-6 md:p-12 md:mx-6">
                 <h2 class="text-xl font-semibold mb-6">Vous avez deja un compte ?</h2>
                 <a target="_self" href="{{ path('app_login')}}" class=" w-full text-sm text-gray-50 border-solid border-2 border-gray-50">
@@ -24,16 +24,39 @@
                     {{ form_start(registrationForm) }}
                         <ul class="grid grid-cols-2">
                             <li> 
-                                {{ form_row(registrationForm.name, {'label':'votre ', 'attr': {'placeholder': 'Prénom'}}) }}
+                                <div class="form-control pr-4">
+                                    {{ form_label(registrationForm.email, 'Prénom', {'label_attr': {'class': 'foo'}}) }}
+                                    <br>
+                                    {{ form_widget(registrationForm.name, {'attr': {'class': 'label_register_size'}}) }}
+                                </div>
                             </li>
                             <li>
-                                {{ form_row(registrationForm.surname, {'label':'votre ', 'attr': {'placeholder': 'Nom'}}) }}      
+                                <div class="form-control">
+                                    {{ form_label(registrationForm.email, 'Nom', {'label_attr': {'class': 'foo'}}) }}
+                                    <br>
+                                    {{ form_widget(registrationForm.surname, {'attr': {'class': 'label_register_size'}}) }}    
+                                </div>  
                             </li>                        
                         </ul>
-                        {{ form_row(registrationForm.email) }}
-                        {{ form_row(registrationForm.password.first , {label: 'Password'}) }}
-                        {{ form_row(registrationForm.password.second) }}
-                        {{ form_row(registrationForm.agreeTerms) }}
+                        <div class="form-control">
+                            {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'foo'}}) }}
+                            <br>
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'label_register_size'}}) }}
+                        </div>
+                        <div class="form-control">
+                            {{ form_label(registrationForm.password.first, 'Mot de passe', {'label_attr': {'class': 'foo'}}) }}
+                           <br>
+                            {{ form_widget(registrationForm.password.first, {'attr': {'class': 'label_register_size'}})}}
+                        </div>
+                        <div class="form-control">
+                            {{ form_label(registrationForm.password.second, 'Confirmer mot de passe', {'label_attr': {'class': 'foo'}}) }}
+                            <br>
+                            {{ form_widget(registrationForm.password.second, {'attr': {'class': 'label_register_size'}}) }}
+                        </div>
+                        <div class="form-control">
+                            {{ form_label(registrationForm.agreeTerms, 'Accepter les conditions', {'label_attr': {'class': 'foo'}}) }}
+                            {{ form_widget(registrationForm.agreeTerms) }}
+                        </div>
                         <button type="submit" class=" w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">Créer votre compte</button>
                     {{ form_end(registrationForm) }}
                 </div>

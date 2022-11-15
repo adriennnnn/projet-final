@@ -6,19 +6,21 @@
     <h1>ShowCase index</h1>
 
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
+        <thead >
+            <div class="text-purple-400 border-solid border-2 border-purple-400">
+                <h3>Id</h3>
+                <h3>Title</h3>
+                <h3>Description</h3>
+                <h3>actions</h3>
+            </div>  
         </thead>
         <tbody>
         {% for show_case in show_cases %}
             <tr>
                 <td>{{ show_case.id }}</td>
+
                 <td>{{ show_case.title }}</td>
+
                 <td>{{ show_case.description }}</td>
                 <td>
                     <a href="{{ path('app_show_case_show', {'id': show_case.id}) }}">show</a>

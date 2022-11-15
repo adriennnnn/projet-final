@@ -89,8 +89,14 @@ class ShowCaseController extends AbstractController
      */
     public function show(ShowCase $showCase): Response
     {
+        // dd($showCase->userId);
+        //err getUserId ne donne pas l'id mais l'user en entier
+        $user =$showCase->getUserId();
+        $user_id = $user->getId();
+
         return $this->render('show_case/show.html.twig', [
             'show_case' => $showCase,
+            'user_id' => $user_id,
         ]);
     }
     // /**
