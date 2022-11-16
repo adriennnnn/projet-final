@@ -13,6 +13,7 @@ use App\Repository\CompanyRepository;
 
 use App\Repository\CategoryRepository;
 use App\Repository\ShowCaseRepository;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -87,16 +88,19 @@ class ShowCaseController extends AbstractController
     /**
      * @Route("/{id}", name="app_show_case_show", methods={"GET"})
      */
-    public function show(ShowCase $showCase): Response
+    public function show(ShowCase $showCase, CategoryRepository $categoryRepository): Response
     {
         // dd($showCase->userId);
         //err getUserId ne donne pas l'id mais l'user en entier
         $user =$showCase->getUserId();
         $user_id = $user->getId();
 
+
+
         return $this->render('show_case/show.html.twig', [
             'show_case' => $showCase,
             'user_id' => $user_id,
+            'categories' => $showCase->getcategorys(),
         ]);
     }
     // /**

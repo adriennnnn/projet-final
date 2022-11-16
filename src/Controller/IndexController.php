@@ -15,7 +15,7 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function index(ShowCaseRepository $showCaseRepository, CategoryRepository $categoryRepositoru): Response
+    public function index(ShowCaseRepository $showCaseRepository, CategoryRepository $categoryRepository): Response
     {
         // $id = $this->getUser();
         // $user = $userRepository->findOneBy(['id' => $id]);
@@ -25,7 +25,7 @@ class IndexController extends AbstractController
             'controller_name' => 'IndexController',
             // penser a ajouter les render pour pouvoir afficher les info des company et showcase
             'show_cases' => $showCaseRepository->findAll(),
-            'categories' => $categoryRepositoru->findAll(),
+            'categories' => $categoryRepository->findAll(),
 
             // 'show_cases' => $showcaseByUser,
 
