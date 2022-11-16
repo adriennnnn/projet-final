@@ -1,16 +1,70 @@
 {# {{dump(form)}} #}
-{{ form_start(form) }}
+<div class="grid md:grid-cols-12 m-10">
+    <div class="md:col-span-6 bg-white p-10">
+        {{ form_start(form) }}
+        <div class="grid lg:grid-cols-4">
+            <div class="lg:col-span-2">
+                <div class="form-control pr-4">
+                    {{ form_label(form.title, 'Nom de la companie', {'label_attr': {'class': 'foo'}}) }}
+                    <br>
+                    {{ form_widget(form.title, {'attr': {'class': 'lable_company_size'}}) }}    
+                </div>
+                <div class="form-control pr-4 ">
+                    {{ form_label(form.companyId, 'Numero Siret', {'label_attr': {'class': 'foo'}}) }}
+                    <br>
+                    {{ form_widget(form.companyId, {'attr': {'class': 'lable_company_size'}}) }}    
+                </div>
+                <div class="form-control pr-4 ">
+                    {{ form_label(form.images, 'Numero Siret', {'label_attr': {'class': 'foo'}}) }}
+                    <br>
+                    {{ form_widget(form.images, {'attr': {'class': 'lable_company_size'}}) }}    
+                </div>
+                <div class="form-control pr-4">
+                    {{ form_label(form.phoneNumber, 'Description de la companie', {'label_attr': {'class': 'foo'}}) }}
+                    <br>
+                    {{ form_widget(form.phoneNumber, {'attr': {'class': 'lable_company_size'}}) }}    
+                </div>
+            </div>
+            <div class="lg:col-span-2">
+                <div class="form-control">
+                    {{ form_label(form.description, 'Description de la companie', {'label_attr': {'class': 'foo'}}) }}
+                    <br>
+                    {{ form_widget(form.description, {'attr': {'class': 'lable_company_size'}}) }}    
+                </div>
+                <div class="form-control">
+                    {{ form_label(form.email, 'Description de la companie', {'label_attr': {'class': 'foo'}}) }}
+                    <br>
+                    {{ form_widget(form.email, {'attr': {'class': 'lable_company_size'}}) }}    
+                </div>
+
+            </div> 
+        </div>
+        <div class="form-control">
+            {{ form_label(form.categorys, 'Description de la companie', {'label_attr': {'class': 'foo'}}) }}
+            <br>
+            {{ form_widget(form.categorys, {'attr': {'class': 'lable_company_size'}}) }}    
+        </div>
+    </div>
+
+        <div class="md:col-span-6 bg-purple-400 grid-cols-none">
+            <p>Vous etes connectez en avec l'adresse email;</p>
+            <p>{{app.user.userIdentifier}}</p>
+    </div>
+</div>
 
 
-    {{ form_row(form.title, {'label':'Titre ', 'attr': {'placeholder': 'Nom de votre magasin' }}) }}
-    {{ form_row(form.description, {'label':'Description ', 'attr': {'placeholder': 'Presentation general de votre boutique'}}) }}
+
+
+
     {# {{ form_row(form.companyId, {"attr": {'value': app.company.name}}
     ) }} #}
+    {# {{ form_row(form.title, {'label':'Titre ', 'attr': {'placeholder': 'Nom de votre magasin' }}) }}
+    {{ form_row(form.description, {'label':'Description ', 'attr': {'placeholder': 'Presentation general de votre boutique'}}) }}
     {{ form_row(form.companyId, {'label':"selection l'entreprise associer ", 'attr': {'placeholder': 'liste des entreprise inscrite'}})}}
     {{ form_row(form.images)}}
     {{ form_row(form.categorys)}}
     {{ form_row(form.email, {'label':'Email '})}}
-    {{ form_row(form.phoneNumber, {'label':'Numero de téléphone ' , 'attr': {'placeholder': '0412345678', "class":"text-red-400"}})}}
+    {{ form_row(form.phoneNumber, {'label':'Numero de téléphone ' , 'attr': {'placeholder': '0412345678', "class":"text-red-400"}})}} #}
 
 
     {# <p>{{app.user.userIdentifier}}</p>

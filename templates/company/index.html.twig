@@ -6,25 +6,25 @@
     <h1>Company index</h1>
 
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>CompanyName</th>
-                <th>SiretNumber</th>
-                <th>CompanyDescription</th>
-                <th>actions</th>
+        <thead class="w-full bg-purple-400">
+            <tr class= "">
+                <th class="text-white p-2">Id</th>
+                <th class="text-white p-2">Nom de la companie</th>
+                <th class="text-white p-2">SiretNumber</th>
+                <th class="text-white p-2">Description</th>
+                <th class="text-white p-2">actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-white" >
         {% for company in companies %}
-            <tr>
-                <td>{{ company.id }}</td>
-                <td>{{ company.companyName }}</td>
-                <td>{{ company.siretNumber }}</td>
-                <td>{{ company.companyDescription }}</td>
-                <td>
-                    <a href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
-                    <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
+            <tr class"bg-white">
+                <td class="p-2">{{ company.id }}</td>
+                <td class="p-2">{{ company.companyName }}</td>
+                <td class="p-2">{{ company.siretNumber }}</td>
+                <td class="p-2">{{ company.companyDescription }}</td>
+                <td class="p-2">
+                    <a class="text-purple-400" href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
+                    <a class="text-purple-400" href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -34,6 +34,9 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_company_new') }}">Create new</a>
+    <div class="bg-white w-96 text-right">
+        <div class="w-80 content-center justify-center">
+            <a class="px-6 w-full mt-10 text-purple-400 border-solid border-2 border-purple-400" href="{{ path('app_company_new') }}">Create new</a>
+        </div>
+    </div>
 {% endblock %}

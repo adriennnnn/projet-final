@@ -15,6 +15,8 @@ use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class ShowCaseType extends AbstractType
 {
@@ -23,7 +25,9 @@ class ShowCaseType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
+            ->add('description', TextareaType::class, [
+                'attr' => ['class' => 'tinymce'],]
+                )
             ->add('email')
             ->add('phoneNumber')
             ->add('categorys', CategoryType::class,[
