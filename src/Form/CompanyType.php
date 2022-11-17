@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
 
 class CompanyType extends AbstractType
 {
@@ -15,7 +16,11 @@ class CompanyType extends AbstractType
     {
         $builder
             ->add('companyName')
-            ->add('siretNumber')
+            ->add('siretNumber'
+            // , TypeTextType::class, array(
+                //pour ajouter une limite de a la longeur du txt
+            // 'attr' => ['pattern' => '/^[0-9]{8}$/', 'maxlength' => 8])
+            )
             ->add('companyDescription', TextareaType::class, [
                 'attr' => ['class' => 'tinymce'],]
                 )

@@ -4,39 +4,51 @@
 
 {% block body %}
     <h1>Company index</h1>
+    <div class="p-10 bg-white grid grid-cols-12">
+        <div class="col-span-8"> 
+            <div class="m-0 pr-4 border-solid border-r-2 border-purple-400">
+                <table class="w-full table m-0 ">
+                    <thead class="bg-purple-400">
+                        <tr class= "">
+                            <th class="text-white p-2">Id</th>
+                            <th class="text-white p-2">Nom de la companie</th>
+                            <th class="text-white p-2">SiretNumber</th>
+                            <th class="text-white p-2">Description</th>
+                            <th class="text-white p-2">actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white " >
+                    {% for company in companies %}
+                        <tr class"bg-white m-2">
+                            <td class="p-2 border-solid border-y-2 border-purple-400 ">{{ company.id }}</td>
+                            <td class="p-2 border-solid border-y-2 border-purple-400 ">{{ company.companyName }}</td>
+                            <td class="p-2 border-solid border-y-2 border-purple-400 ">{{ company.siretNumber }}</td>
+                            <td class="p-2 border-solid border-y-2 border-purple-400 ">{{ company.companyDescription }}</td>   
+                            <td class="p-2 border-solid border-y-2 border-purple-400 ">
+                                <a class="text-purple-400" href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
+                                <a class="text-purple-400" href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-span-4">
+            <div class="bg-white w-96 text-right m-4">
+                <div class="w-80 content-center justify-center">
+                    <a class="px-6 w-full mt-10 text-purple-400 border-solid border-2 border-purple-400" href="{{ path('app_company_new') }}">Create new</a>
+                    <a class="px-6 w-full mt-10 text-purple-400 border-solid border-2 border-purple-400" href="{{ path('app_profile') }}">retour en arriere</a>
 
-    <table class="table">
-        <thead class="w-full bg-purple-400">
-            <tr class= "">
-                <th class="text-white p-2">Id</th>
-                <th class="text-white p-2">Nom de la companie</th>
-                <th class="text-white p-2">SiretNumber</th>
-                <th class="text-white p-2">Description</th>
-                <th class="text-white p-2">actions</th>
-            </tr>
-        </thead>
-        <tbody class="bg-white" >
-        {% for company in companies %}
-            <tr class"bg-white">
-                <td class="p-2">{{ company.id }}</td>
-                <td class="p-2">{{ company.companyName }}</td>
-                <td class="p-2">{{ company.siretNumber }}</td>
-                <td class="p-2">{{ company.companyDescription }}</td>   
-                <td class="p-2">
-                    <a class="text-purple-400" href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
-                    <a class="text-purple-400" href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <div class="bg-white w-96 text-right">
-        <div class="w-80 content-center justify-center">
-            <a class="px-6 w-full mt-10 text-purple-400 border-solid border-2 border-purple-400" href="{{ path('app_company_new') }}">Create new</a>
+                </div>
+            </div>
+
         </div>
     </div>
+
+
 {% endblock %}

@@ -10,9 +10,9 @@
 
 <div>
     {# Page body #}
-    <div class="bg-white m-10 grid grid-cols-12">
+    <div class="bg-white m-10 grid lg:grid-cols-12 md:grid-cols-4">
         {# ajouté une company #}
-        <div class="col-span-4 p-10">
+        <div class="md:col-span-2 lg:col-span-4 p-10">
             {# page header #}
             <div class="">
                 <h1 class="text-xl font-semibold mb-6">Vous etes sur votre profil</h1>
@@ -22,8 +22,8 @@
                 <p class="text-purple-400">{{app.user.userIdentifier}}</p>
             </div>
         </div>
-        <div class="col-span-4 p-10 bg-purple-400">
-            <div class="border-solid border-2 border-purple-400 p-24 ">
+        <div class="md:col-span-2 lg:col-span-4 p-10 bg-purple-400">
+            <div class="flex flex-col items-center text-center">
                 <h3 class="text-white">Consulter, creer ou editer vos fiche entreprise </h3>
                 <buttom class='my-10 px-10 mt-10 text-white border-solid border-2 border-white'>
                     <a href="{{ path('app_company_index')  }}">consulter</a>     
@@ -33,8 +33,8 @@
              </div>
         </div>
                 {# ajouté une showCase / sucursalle ou boutique #}
-        <div class="col-span-4 p-10">
-            <div>
+        <div class="lg:col-span-4 p-10 align-middle">
+            <div class="flex flex-col items-center text-center">
                 <h3>Consulter, creer ou editer vos vitrine</h3>
                 <buttom class=' my-10 px-10 mt-10 text-purple-400 border-solid border-2 border-purple-400'>
                     <a href="{{ path('app_show_case_index')  }}">consulter</a>             

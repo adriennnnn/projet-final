@@ -37,6 +37,14 @@ class ShowCaseType extends AbstractType
             //     'class' => User::class,
             //     'choices' => $showCase->getCompany(),
             // ]);
+            // ->add('company', RepeatedType::class, [
+            //     // 'class' => Company::class,
+            //     'type' => User::class,
+            //     'options' => ['label' => 'companies'],
+            //     'required' => true,
+
+            //     // 'choice_label' => 'name',
+            // ])
             ->add('companyId')
             ->add('images', FileType::class, [
                 // 'lable' => false,  //on enleve le lable pour ne pas marquer image mais ca ne marche pas

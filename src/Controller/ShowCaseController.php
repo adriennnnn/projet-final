@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormFactoryInterface;
 
 /**
  * @Route("/showcase")
@@ -45,13 +46,25 @@ class ShowCaseController extends AbstractController
     /**
      * @Route("/new", name="app_show_case_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository, CategoryRepository $categoryRepository ): Response
+    public function new(FormFactoryInterface $formFactory, Request $request, ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository, CategoryRepository $categoryRepository ): Response
     {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+
         $showCase = new ShowCase();
-        $form = $this->createForm(ShowCaseType::class, $showCase);
+        // $form = $this->createForm(ShowCaseType::class, $showCase);
+        $companiesUser = $user->getCompanies();
+        $form = $formFactory->createNamed('my_name', ShowCaseType::class, $companiesUser);
+
         $form->handleRequest($request);
+       
+        // dd($companiesUser);
+        $companiesUser =  $companyRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $companyId = $request->request->get('company');
+            $showCase->setCompanyId($companyId);
             
             //On recupère les images transmises 
             $images = $form->get('images')->getData();
@@ -71,14 +84,17 @@ class ShowCaseController extends AbstractController
 
             }
 
-            $showCase->setUserId($this->getUser());
+            $showCase->setUserId($user);
+            
+
+
             $showCaseRepository->add($showCase, true);
 
             return $this->redirectToRoute('app_show_case_index', [], Response::HTTP_SEE_OTHER);
         }
         return $this->renderForm('show_case/new.html.twig', [
             'show_case' => $showCase,
-            'company' => $companyRepository->findAll(),
+            'companyId' => $companiesUser,
             'form' => $form,
             'category' => $categoryRepository,
         ]);
