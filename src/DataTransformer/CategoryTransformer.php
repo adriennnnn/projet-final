@@ -54,7 +54,6 @@ class CategoryTransformer implements DataTransformerInterface
             $category->setSlug(str_replace(' ', '-', $newCategory));
             $searchCategory[] = $category;
         }
-
         // $arrayCategoryName = [];
         // foreach ($arrayOfString as $string) {
         //       $withoutSpace = trim($string);

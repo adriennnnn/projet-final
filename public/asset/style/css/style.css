@@ -21,4 +21,10 @@ body{
 footer{
     position: absolute;
     margin-bottom: 0px;
+    width: 100%;
+
+}
+.textarea_show_case{
+    width: 100%;
+    height: 126px;
 }

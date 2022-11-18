@@ -46,8 +46,7 @@ class DashboardController extends AbstractDashboardController
         //     MenuItem::LinkToCrud('Toute les utilisateurs', 'fas fa-list',  User::class),
         //     MenuItem::LinkToCrud('Ajouter un utilisateur', 'fas fa-plus',  User::class)->setAction(Crud::PAGE_NEW)
         // ]);
-
-
+            
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
 
     }

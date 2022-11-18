@@ -5,16 +5,16 @@
         <title>GM - {% block title %}{% endblock %}</title>
         {# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"> #}
         <link rel="icon" href="../asset/image/logotmp.png">
-        <link rel="stylesheet" href="../style/style.css">
+        {# <link rel="stylesheet" href="../style/style.css"> #}
 
 
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-        <script src="{{ asset('style/js/main.js') }}"></script>
+        <script src="{{ asset('asset/style/js/main.js') }}"></script>
 
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-            <link rel="stylesheet" href={{ asset ('style/css/style.css') }}>
+            <link rel="stylesheet" href={{ asset ('asset/style/css/style.css') }}>
         {% endblock %}
 
         {% block javascripts %}
@@ -29,8 +29,8 @@
                 </h1>
             </div>
             <ul class="flex justify-end">
-                <li class="mx-8 mb-5"><a href="{{ path('app_homepage') }}">Accueil </a></li>
-                <li class="mx-8 mb-5"><a href="{{ path('app_about') }}">A propos de </a></li>
+                <li class="mx-8 mb-5 text-xl font-semibold mb-6 hover:text-purple-400 text-xl"><a href="{{ path('app_homepage') }}">Accueil </a></li>
+                <li class="mx-8 mb-5 text-xl font-semibold mb-6 hover:text-purple-400 text-xl"><a href="{{ path('app_about') }}">A propos de </a></li>
                 {% if not app.user %}
                      <li class="mx-8 mb-5">
                         <a target="_self" href="{{ path('app_login') }}">
@@ -43,12 +43,13 @@
                         </a>
                      </li>
                 {% else %}
-                <li class="mx-8 mb-5"><a href="{{ path('app_profile') }}">Profil</a></li>
+                <li class="mx-8 mb-5 font-semibold mb-6 hover:text-purple-400 text-xl"><a href="{{ path('app_profile') }}">Profil</a></li>
                         <li>
                             <span>{{ app.user.userIdentifier }}</span>
+                        </li>
                         <li class="mx-8">
                            <a target="_self" href="{{path('app_logout')}}">
-                                <span>deconnexion</span>
+                                <span class="text-xl font-semibold mb-6 hover:text-purple-400 text-xl">deconnexion</span>
                             </a>
                         </li>
                 {% endif %}

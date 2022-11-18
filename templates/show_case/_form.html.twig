@@ -46,7 +46,7 @@
                 <div class="form-control">
                     {{ form_label(form.description, 'Description de la companie', {'label_attr': {'class': 'foo'}}) }}
                     <br>
-                    {{ form_widget(form.description, {'attr': {'class': 'lable_company_size'}}) }}    
+                    {{ form_widget(form.description, {'attr': {'class': 'lable_company_size textarea_show_case'}}) }}    
                 </div>
                 <div class="form-control">
                     {{ form_label(form.email, 'Email de la succursale', {'label_attr': {'class': 'foo'}}) }}
@@ -63,14 +63,12 @@
         </div>
     </div>
     <datalist id="categories_list">
-            {% for category in categories  %}
-                <option value="{{category.name}}">
-            {% endfor %}
-        </datalist>
-
-        <div class="md:col-span-6 bg-purple-400 grid-cols-none">
-            <p>Vous etes connectez en avec l'adresse email;</p>
-            <p>{{app.user.userIdentifier}}</p>
+        {% for category in categories  %}
+            <option value="{{category.name}}">
+        {% endfor %}
+    </datalist>
+    <div class="md:col-span-6 bg-purple-400 grid-cols-none flex content-center p-10">
+        <p class="text-white text-2xl font-semibold">ICI, vous pouvez creer<br>et parsonaliser vos vitrine </p>
     </div>
 </div>
 

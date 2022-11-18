@@ -3,16 +3,17 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+<div onlaode="">
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
-    <div class="">
+    <div class="loaded()">
 
             <ul class="bg-gray-50 border-solid border-y-2 border-slate-100 px-10 pb-[3px] pt-[5px]" >
             {% for show_case_category in categories %}
-                <li class=" tiket-category inline-block px-2 py-[1px] border-solid border-2 border-gay-900 rounded-lg ">
-                    <a class="categorySelect" id="{{show_case_category.name}}">
+                <li class="tiket-category inline-block px-2 py-[1px] border-solid border-2 border-gay-900 rounded-lg ">
+                    <a class="categorySelect cursor-pointer" id="{{show_case_category.name}}">
                     {{ show_case_category.name|capitalize }}
                     </a>
                 </li>
@@ -38,7 +39,7 @@ app_show_case_show-index
                 <div class="flex justify-center mx-44 py-4 ">
                     {% for show_case_category in categories %}
                     <a
-                     {# href="{{ path('app_show_case_show', {'id': show_case.id}) }}" #}
+                     href="{{ path('app_show_case_show', {'id': show_case.id}) }}"
                      id="{{ show_case_category.name}}" class="h4DogBreed flex flex-col items-center bg-white w-full rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     {% endfor %}
       
@@ -103,6 +104,6 @@ app_show_case_show-index
             </tr>
         {% endfor %}
         </tbody> #}
-
+</div>
 
 {% endblock %}

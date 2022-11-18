@@ -71,27 +71,40 @@
 //    }
 // }
 
-//On récupère tous nos li sur lesquelles 
-let categories = document.querySelectorAll('.categorySelect')
+//On récupère tous nos li sur lesquelles
+
+function loaded() {
+    
+    
+    const categories = document.querySelector("categorySelect");
 console.log(categories);
 //On récupère toutes nos cards
-let cards = document.querySelectorAll('.displayCard')
+const cards = document.querySelectorAll('.displayCard')
+
 
 //On boucle sur chaque li
-categories.forEach((category) => {
-    //on met un event 'click' sur chaque li
-    category.addEventListener('click', () => {
-        //on crée une variable pour stocker la valeur de l'id(html) de chaque li
+document.addEventListener("DOMContentLoaded" , () => {
+    console.log("here");
+    categories.forEach((category) => {
+        
+        alert("here two")
+        console.log("here two");
+        alert("ici aussi")
+        console.log(category);
+        //on met un event 'click' sur chaque li
+        category.addEventListener('click', () => {
+            alert('Test')
+            //on crée une variable pour stocker la valeur de l'id(html) de chaque li
         let categoryId = category.id
         console.log('Race cliquée : ', category.id)
         //on boucle sur chaque card 
         cards.forEach(card => {
             //on récupère chaque card pour récupérer la valeur de la race dans la card
-            let h4dogBreed = card.querySelector('.h4DogBreed')
+            const h4dogBreed = card.querySelector('.h4DogBreed')
             console.log('LOL : ', h4dogBreed);
             console.log('identifier :', categoryId, 'Race card :', h4dogBreed.dataset.id);
             //On compare pour chaque card l'id du li et le data-id de la card
-            if (categoryId !== h4dogBreed.dataset.id) {
+            if (categoryId !== h4dogBreed) {
                 console.log("Race correspond : suppression classe card");
                 //Si l'id du li et le data-id de la card ne correspondent pas, on 
                 //supprime la classe card et on ajoute une classe d-none pour la cacher
@@ -101,6 +114,10 @@ categories.forEach((category) => {
                 card.classList.replace('d-none', 'container')
             }
         }) 
-
+        
     })
 })
+
+})
+
+}
