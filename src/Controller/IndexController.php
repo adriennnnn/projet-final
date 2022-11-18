@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ShowCase;
 use App\Repository\CategoryRepository;
+use App\Repository\CompanyRepository;
 use App\Repository\UserRepository;
 use App\Repository\ShowCaseRepository;
 use Symfony\Component\HttpFoundation\Response;

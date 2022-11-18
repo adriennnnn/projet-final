@@ -7,6 +7,7 @@ use App\Entity\Category;
 
 use App\Entity\ShowCase;
 use App\DataTransformer\CategoryTransformer;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,10 +17,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-
+use Symfony\Component\Security\Core\Security;
 
 class ShowCaseType extends AbstractType
 {
+
+    private $security;
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -45,7 +52,15 @@ class ShowCaseType extends AbstractType
 
             //     // 'choice_label' => 'name',
             // ])
-            ->add('companyId')
+            ->add('companyId', EntityType::class, [
+                'class' => Company::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->andWhere('c.userId = :user')
+                        ->setParameter('user', $this->security->getUser());
+                },
+            ]
+            )   
             ->add('images', FileType::class, [
                 // 'lable' => false,  //on enleve le lable pour ne pas marquer image mais ca ne marche pas
                 'multiple' => true,

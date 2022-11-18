@@ -19,6 +19,10 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
+        // $url = $this->adminUrlGenerator
+        //     ->setController(UserCrudController::class)
+        //     ->generateUrl();
+        //     return $this->redirect($url);
         return parent::index();
     }
 
@@ -35,11 +39,14 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('categorie', 'fas fa-list')->setSubItems([
             MenuItem::LinkToCrud('Toute les categorie', 'fas fa-list',  Category::class),
             MenuItem::LinkToCrud('Ajouter', 'fas fa-plus',  Category::class)->setAction(Crud::PAGE_NEW)
-
-
         ]);
 
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', User::class);
+        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', User::class);
+        // yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list')->setSubItems([
+        //     MenuItem::LinkToCrud('Toute les utilisateurs', 'fas fa-list',  User::class),
+        //     MenuItem::LinkToCrud('Ajouter un utilisateur', 'fas fa-plus',  User::class)->setAction(Crud::PAGE_NEW)
+        // ]);
+
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
 

@@ -9,11 +9,16 @@
     margin-bottom: 10px;
 }
 body{
-    background-image: url(../style/bg\ IMG\ rue.png);
+    background-image: url(../../image/bg\ IMG\ rue.png);
     background-attachment: fixed;
     /* object-fit: cover; */
     background-size: cover;
+    min-height: auto;
 }
 .d-none{
     display: none;
+}
+footer{
+    position: absolute;
+    margin-bottom: 0px;
 }

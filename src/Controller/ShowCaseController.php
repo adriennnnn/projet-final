@@ -49,22 +49,26 @@ class ShowCaseController extends AbstractController
     public function new(FormFactoryInterface $formFactory, Request $request, ShowCaseRepository $showCaseRepository, CompanyRepository $companyRepository, CategoryRepository $categoryRepository ): Response
     {
         /** @var \App\Entity\User $user */
+        //pour appl les user 
         $user = $this->getUser();
 
+        $companiesUser = $user->getCompanies()->getValues();
+        // dd($companiesUser);
         $showCase = new ShowCase();
-        // $form = $this->createForm(ShowCaseType::class, $showCase);
-        $companiesUser = $user->getCompanies();
-        $form = $formFactory->createNamed('my_name', ShowCaseType::class, $companiesUser);
+
+        $form = $this->createForm(ShowCaseType::class, $showCase);
 
         $form->handleRequest($request);
-       
+
+        //triste ca ne marche pas avec le simplie getcompanie dans l'entity user 
+        // $companiesUser = $user->getCompanies()
+        // $form = $formFactory->createNamed('my_name', ShowCaseType::class, $companiesUser);
+        // $form->handleRequest($request);
         // dd($companiesUser);
-        $companiesUser =  $companyRepository->findAll();
+        // $companiesUser =  $companyRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $companyId = $request->request->get('company');
-            $showCase->setCompanyId($companyId);
             
             //On recupère les images transmises 
             $images = $form->get('images')->getData();
@@ -96,7 +100,7 @@ class ShowCaseController extends AbstractController
             'show_case' => $showCase,
             'companyId' => $companiesUser,
             'form' => $form,
-            'category' => $categoryRepository,
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 

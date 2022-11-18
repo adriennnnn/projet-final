@@ -39,7 +39,7 @@
                         <h1 class="text-2xl font-semibold mb-6">{{ show_case.title }}</h1>
                         <p class="mb-6 text-lg font-normal font-semibold">{{ show_case.description }}</p>
                         <p>
-                            <ul class="bg-gray-50 border-solid border-y-2 border-slate-100 px-10 pb-[3px] pt-[5px]" >
+                            <ul class="border-slate-100 px-10 pb-[3px] pt-[5px]" >
                             {% for category in categories %}
                                 <li class="tiket-category inline-block px-2 py-[1px] border-solid border-2 border-gay-900 rounded-lg ">
                                     <a href="" id="categories">
@@ -49,9 +49,16 @@
                                  {% endfor %}
                             </ul>
                         </p>
-                        <h3 class="text-xl font-semibold mb-6">Pour contact</h3>
-                            <p class="">Email ; </p>
-                            <p>Téléphone ; </p>
+                        <h3 class="text-xl font-semibold mb-6">Pour nous contacter</h3>
+                            <p class="">Email ; <a href="mailto:{{ show_case.email }}"> {{ show_case.email }}</a></p>
+                            <p>Téléphone ; <a href="tel:{{ show_case.phoneNumber }}"> {{ show_case.phoneNumber }} </a></p>
+                        <br>
+                        {% if app.user.isVerified == true %}
+                        <h3>l'utilisateur ayant ajouter ces information est un utilisateur confirmer ✅</h3>
+                        {% else %}
+                        <h3>l'utilisateur ayant ajouter ces information n'est pas utilisateur confirmer ❌</h3>
+                        {% endif %}
+
                     </div>
                 </div>
 
