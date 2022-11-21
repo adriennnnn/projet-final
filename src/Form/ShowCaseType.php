@@ -37,6 +37,7 @@ class ShowCaseType extends AbstractType
                 )
             ->add('email')
             ->add('phoneNumber')
+            ->add('address')
             ->add('categorys', CategoryType::class,[
                 'data_class' => null
             ])        

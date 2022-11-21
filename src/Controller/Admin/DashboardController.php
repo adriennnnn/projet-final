@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Entity\Category;
-
+use App\Entity\ShowCase;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -34,18 +34,22 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+        // yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+        yield  MenuItem::linkToRoute('Logout', 'fa-solid fa-right-to-bracket mr-2 fa-beat-fade', 'app_homepage');
 
         yield MenuItem::subMenu('categorie', 'fas fa-list')->setSubItems([
             MenuItem::LinkToCrud('Toute les categorie', 'fas fa-list',  Category::class),
             MenuItem::LinkToCrud('Ajouter', 'fas fa-plus',  Category::class)->setAction(Crud::PAGE_NEW)
         ]);
 
+        yield MenuItem::subMenu('categorie', 'fas fa-list')->setSubItems([
+            MenuItem::LinkToCrud('Toute les categorie', 'fas fa-list',  ShowCase::class),
+            MenuItem::LinkToCrud('Ajouter', 'fas fa-plus',  ShowCase::class)->setAction(Crud::PAGE_NEW)
+        ]);
+
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', User::class);
-        // yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list')->setSubItems([
-        //     MenuItem::LinkToCrud('Toute les utilisateurs', 'fas fa-list',  User::class),
-        //     MenuItem::LinkToCrud('Ajouter un utilisateur', 'fas fa-plus',  User::class)->setAction(Crud::PAGE_NEW)
-        // ]);
+
+        // yield MenuItem::linkToCrud('Tableau de bord', 'fa fa-list', ShowCase::class );
             
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
 
