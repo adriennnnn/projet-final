@@ -54,10 +54,10 @@
                             <p class="">Email ; <a href="mailto:{{ show_case.email }}"> {{ show_case.email }}</a></p>
                             <p>Téléphone ; <a href="tel:{{ show_case.phoneNumber }}"> {{ show_case.phoneNumber }} </a></p>
                         <br>
-                        {% if app.user.isVerified == true %}
-                        <h3>l'utilisateur ayant ajouter ces information est un utilisateur confirmer ✅</h3>
+                        {% if show_case.userId.isVerified == true %}
+                            <h3>l'utilisateur ayant ajouter ces information est un utilisateur confirmer ✅</h3>
                         {% else %}
-                        <h3>l'utilisateur ayant ajouter ces information n'est pas utilisateur confirmer ❌</h3>
+                            <h3>l'utilisateur ayant ajouter ces information n'est pas utilisateur confirmer ❌</h3>
                         {% endif %}
 
                     </div>

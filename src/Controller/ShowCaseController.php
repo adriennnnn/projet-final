@@ -136,7 +136,7 @@ class ShowCaseController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_show_case_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, ShowCase $showCase, ShowCaseRepository $showCaseRepository): Response
+    public function edit(Request $request, ShowCase $showCase, ShowCaseRepository $showCaseRepository, CategoryRepository $categoryRepository): Response
     {
         $form = $this->createForm(ShowCaseType::class, $showCase);
         $form->handleRequest($request);
@@ -150,6 +150,8 @@ class ShowCaseController extends AbstractController
         return $this->renderForm('show_case/edit.html.twig', [
             'show_case' => $showCase,
             'form' => $form,
+            'categorys' => $categoryRepository->findAll(),
+
         ]);
     }
 

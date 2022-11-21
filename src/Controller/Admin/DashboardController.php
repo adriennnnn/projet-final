@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -26,6 +27,11 @@ class DashboardController extends AbstractDashboardController
         return parent::index();
     }
 
+
+
+
+    
+
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
@@ -37,13 +43,13 @@ class DashboardController extends AbstractDashboardController
         // yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
         yield  MenuItem::linkToRoute('Logout', 'fa-solid fa-right-to-bracket mr-2 fa-beat-fade', 'app_homepage');
 
-        yield MenuItem::subMenu('categorie', 'fas fa-list')->setSubItems([
+        yield MenuItem::subMenu('Categorie', 'fas fa-list')->setSubItems([
             MenuItem::LinkToCrud('Toute les categorie', 'fas fa-list',  Category::class),
             MenuItem::LinkToCrud('Ajouter', 'fas fa-plus',  Category::class)->setAction(Crud::PAGE_NEW)
         ]);
 
-        yield MenuItem::subMenu('categorie', 'fas fa-list')->setSubItems([
-            MenuItem::LinkToCrud('Toute les categorie', 'fas fa-list',  ShowCase::class),
+        yield MenuItem::subMenu('Vitrine', 'fas fa-list')->setSubItems([
+            MenuItem::LinkToCrud('Toute les Vitrine', 'fas fa-list',  ShowCase::class),
             MenuItem::LinkToCrud('Ajouter', 'fas fa-plus',  ShowCase::class)->setAction(Crud::PAGE_NEW)
         ]);
 

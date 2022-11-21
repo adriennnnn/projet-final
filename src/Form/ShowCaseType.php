@@ -78,3 +78,4 @@ class ShowCaseType extends AbstractType
         ]);
     }
 }
+

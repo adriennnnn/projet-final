@@ -3,9 +3,10 @@
 {% block title %}New Company{% endblock %}
 
 {% block body %}
-    <h1>Create new Company</h1>
-
+    <div class=" py-6 mt-6 px-12">
+        <h1 class=" text-2xl font-semibold whitespace-nowrap dark:text-white text-center px-0">Creer une fiche entreprise</h1>
+    </div>
     {{ include('company/_form.html.twig') }}
 
-    <a href="{{ path('app_company_index') }}">back to list</a>
+    {# <a href="{{ path('app_company_index') }}">back to list</a> #}
 {% endblock %}

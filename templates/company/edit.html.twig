@@ -7,10 +7,12 @@
         <h1 class=" text-2xl font-semibold whitespace-nowrap dark:text-white text-center px-0">Edit Company</h1>
     </div>
     {{ include('company/_form.html.twig', {'button_label': 'Update'}) }}
-    <div class="bg-white w-96 text-right">
+    {# <div class="bg-white w-96 text-right">
         <div class="w-80 content-center justify-center">
             <button href="{{ path('app_company_index') }}" class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">back to list</button>
         </div>
-    </div>
+    </div> #}
+    <div class="text-center" >
     {{ include('company/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

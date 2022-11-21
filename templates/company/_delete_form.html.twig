@@ -1,8 +1,8 @@
-<form method="post" action="{{ path('app_company_delete', {'id': company.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <div class="bg-white w-96 text-right mb-10">
-        <div class="w-80 content-center justify-center py-6">
+<form method="post" action="{{ path('app_company_delete', {'id': company.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+    <div class="bg-white w-42 m-10 px-10 overflow-x-hidden">
+        <div class="w-full content-center justify-center py-6">
             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ company.id) }}">
-            <button class="w-full mt-10 text-red-400 border-solid border-2 border-red-400">Delete</button>
+            <button class="w-full text-red-400 border-solid border-2 border-red-400">Supprimer</button>
         </div>
     </div>
 </form>

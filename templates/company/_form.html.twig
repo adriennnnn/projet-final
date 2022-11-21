@@ -1,4 +1,4 @@
-<div class="grid md:grid-cols-12 m-10">
+<div class="grid md:grid-cols-12 m-10 overflow-x-hidden	">
     <div class="md:col-span-6 bg-white p-10">
         {{ form_start(form) }}
             {# {{ form_widget(form) }} #}
@@ -26,6 +26,10 @@
                 </div>
 
             <button class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">{{ button_label|default('Save') }}</button>
+
+            <button href="{{ path('app_company_index') }}" class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">back to list</button>
+
+            
         {{ form_end(form) }}
     </div>
     <div class="md:col-span-6 bg-purple-400">

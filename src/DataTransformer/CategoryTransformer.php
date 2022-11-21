@@ -20,9 +20,10 @@ class CategoryTransformer implements DataTransformerInterface
     }
 
 
-    public function transform($categorys): string
+    public function transform($categories): string
     {
-        $categoriesNames = array_map(fn($value): string => $value->getName(), $categorys->getValues());
+        // dd($categories);
+        $categoriesNames = array_map(fn($value): string => $value->getName(), $categories->getValues());
         return implode(', ', $categoriesNames);
         // return $categoriesNames;
         // return $showCase->getcategorys()->getValues();
