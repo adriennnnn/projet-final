@@ -28,3 +28,8 @@ footer{
     width: 100%;
     height: 126px;
 }
+.Image-Size{
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+}

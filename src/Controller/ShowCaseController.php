@@ -100,7 +100,7 @@ class ShowCaseController extends AbstractController
             'show_case' => $showCase,
             'companyId' => $companiesUser,
             'form' => $form,
-            'categories' => $categoryRepository->findAll(),
+            'categorys' => $categoryRepository->findAll(),
         ]);
     }
 

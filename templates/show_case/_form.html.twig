@@ -66,12 +66,16 @@
             <br>
             {{ form_widget(form.categorys, {'attr': {'class': 'lable_company_size'}, 'list':"categories_list"}) }}    
         </div>
+        <button class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">{{ button_label|default('Save') }}</button>
+
+        <button href="{{ path('app_show_case_index') }}" class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">retour a la liste</button>
     </div>
     <datalist id="categories_list">
         {% for category in categorys  %}
             <option value="{{category.name}}">
         {% endfor %}
     </datalist>
+
     <div class="md:col-span-6 bg-purple-400 grid-cols-none flex content-center p-10">
         <p class="text-white text-2xl font-semibold">ICI, vous pouvez creer<br>et parsonaliser vos vitrine </p>
     </div>

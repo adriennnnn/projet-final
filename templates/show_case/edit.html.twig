@@ -3,11 +3,13 @@
 {% block title %}Edit ShowCase{% endblock %}
 
 {% block body %}
-    <h1>Edit ShowCase</h1>
+    <div class=" py-6 mt-6 px-12">
+        <h1 class=" text-2xl font-semibold whitespace-nowrap dark:text-white text-center px-0">Editer la fiche vitrine</h1>
+    </div>
+    {{ include('show_case/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    {{ include('show_case/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_show_case_index') }}">back to list</a>
+    {# <a href="{{ path('app_show_case_index') }}">back to list</a> #}
+            <button href="{{ path('app_show_case_index') }}" class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">retour a la liste</button>
 
     {{ include('show_case/_delete_form.html.twig') }}
 {% endblock %}
