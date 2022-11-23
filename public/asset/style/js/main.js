@@ -1,123 +1,44 @@
-// // addEventListener(onclick(categories))
-// // $likeElement = document.getElementsByName()
-// // $showByCtegory = function CaatagorySelected () {
-// //     if(){
 
-// //     }
-// //     else(){
+//On récupère tous nos carde show case
 
-// //     }
-// // }
+let displayCards = document.querySelectorAll('.displayCard')
+//on recupere tous les li / les btn pour le filtre avec pour valeur leur id
+let btns = document.querySelectorAll('.categorySelect')
+//on declare une variable vide qui va nous servire a stocke la valeur des btn clické
+let identifier = ''
 
-// window.onload = () => {
-    
-//     //On récupère la div à afficher
-//    let displayDiv = document.querySelectorAll(".tiket-category");
+//on boucle sur les btn pour recupere un par un
+btns.forEach((btn)=>{
+    // sur chaque btn, on ajouter un ecouteur d'evenement (le click)
+    btn.addEventListener('click', ()=>{
+        // on le vide l'identifier a chaque nouveau click
+        identifier =""
+        //on ajoute la valeur de l'id du btn clické dans la variable identifier
+        identifier = btn.id
+        //on boncle sur nos card (tjr dans le meme evenement) pour les recuperer 
+        displayCards.forEach((card)=>{
+            console.log("id du btn :", identifier);
+            console.log("id de la card :", card.id);
+            console.log("La card contient l'id du btn :", card.id.toString().includes(identifier));
 
-//    //on boucle sur les li catégories
-//    document.querySelectorAll("#filtreCat li").forEach(li => {
-       
-//        li.addEventListener("click", () => {
-//            //ici on déclenche l'event
-//            //on récupère les données des li
-//            var btnId = li.id;
-//            var identifier = li.dataset.id
-
-//            displayDiv.forEach(card => {
-//                //on récupère l'id de la categorie et/ou du materiaux du produit à afficher
-//                if(identifier == 'cat'){
-//                    var cardDataCat = card.dataset.categorie;
-//                    //Condition pour afficher les card qui nous interessent
-                   
-//                    displayHide(card, cardDataCat == btnId);
-//                }
-
-//            })
-
-//        });
-//    });
-
-//    //on boucle sur les li materiaux
-//    document.querySelectorAll("#filtreMat li").forEach(li => {
-   
-//        li.addEventListener("click", () => {
-//            //ici on récupère les clic
-//            //on récupère les données des li
-//            var btnId = li.id;
-//            var identifier = li.dataset.id
-
-//            displayDiv.forEach(card => {
-//                //on récupère l'id de la categorie et/ou du materiaux du produit à afficher
-//                if(identifier == 'mat'){
-//                    var cardDataMat = card.dataset.materiaux;
-//                    //Condition pour afficher les card qui nous interessent
-//                    displayHide(card, cardDataMat == btnId);          
-//                }
-
-//            })
-
-//        });
-//    });
-
-// }
-
-// function displayHide(card, ifTrue) {
-//    if (ifTrue) {
-//        card.classList.add('d-flex')
-//        card.classList.remove('d-none')
-//    } else {
-//        card.classList.add('d-none')   
-//        card.classList.remove('d-flex')
-//    }
-// }
-
-//On récupère tous nos li sur lesquelles
-
-function loaded() {
-    
-    
-    const categories = document.querySelector("categorySelect");
-console.log(categories);
-//On récupère toutes nos cards
-const cards = document.querySelectorAll('.displayCard')
-
-
-//On boucle sur chaque li
-document.addEventListener("DOMContentLoaded" , () => {
-    console.log("here");
-    categories.forEach((category) => {
-        
-        alert("here two")
-        console.log("here two");
-        alert("ici aussi")
-        console.log(category);
-        //on met un event 'click' sur chaque li
-        category.addEventListener('click', () => {
-            alert('Test')
-            //on crée une variable pour stocker la valeur de l'id(html) de chaque li
-        let categoryId = category.id
-        console.log('Race cliquée : ', category.id)
-        //on boucle sur chaque card 
-        cards.forEach(card => {
-            //on récupère chaque card pour récupérer la valeur de la race dans la card
-            const h4dogBreed = card.querySelector('.h4DogBreed')
-            console.log('LOL : ', h4dogBreed);
-            console.log('identifier :', categoryId, 'Race card :', h4dogBreed.dataset.id);
-            //On compare pour chaque card l'id du li et le data-id de la card
-            if (categoryId !== h4dogBreed) {
-                console.log("Race correspond : suppression classe card");
-                //Si l'id du li et le data-id de la card ne correspondent pas, on 
-                //supprime la classe card et on ajoute une classe d-none pour la cacher
-                card.classList.replace('container', 'd-none')
+            //si l'id du btn n'est pas inclu dans l'id de la carde, la card passe en hidden
+            if (!card.id.toString().includes(identifier)) {
+                // le tostring permet de consider le card.id comme une chaine de carataire 
+                card.classList.add('hidden')
+                
             }else{
-                console.log('La race ne correspond pas');
-                card.classList.replace('d-none', 'container')
-            }
-        }) 
-        
+                card.classList.remove('hidden')
+            } 
+            console.log(card);
+        })
     })
 })
 
-})
+window.addEventListener("DOMContentLoaded", () =>{
+    const Burger = document.getElementById("jawad");
+    const Menu = document.getElementById('Menu');
 
-}
+    Burger.addEventListener("click", () =>{
+        Menu.classList.toggle("hidden");
+    })
+})

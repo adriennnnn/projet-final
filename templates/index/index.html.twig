@@ -22,7 +22,12 @@
     </div>
     <div>
         {% for show_case in show_cases %}
-            <div class="container displayCard">
+            {% if show_case.categorys.values %}
+                <div class="container displayCard" id="{% for category in show_case.categorys.values %}{{ category.name }}{{ " " }}{%endfor%}">
+            {% else %}
+                <div class="container displayCard" id="noCat">
+
+            {% endif %}
                 <div class="flex justify-center mx-12 sm:mx-12 md:mx-24 xl:mx-24 2xl:mx-44 py-4 ">
                     {# {% for show_case_category in categories %} #}
                     <a

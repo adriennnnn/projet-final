@@ -140,8 +140,31 @@ class ShowCaseController extends AbstractController
     {
         $form = $this->createForm(ShowCaseType::class, $showCase);
         $form->handleRequest($request);
+        $user = $this->getUser();
+
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            //On recupère les images transmises 
+            $images = $form->get('images')->getData();
+            // on bouclz les images
+            foreach($images as $image){
+                //pour changer le nom des ficher et eviter les doublpn
+                $ficher = md5(uniqid()) . '.' . $image->guessExtension();
+                //Pui on copier le ficher dans uploads de public(dossier)
+                $image->move(
+                    $this->getParameter('images_path'),
+                    $ficher
+                );
+                //on enregistre le nom de l'img dans la bdd
+                $img = new ImageShowCase();
+                $img->setImage($ficher);
+                $showCase->addImageShowCase($img);
+
+            }
+
+            $showCase->setUserId($user);
+            
             $showCaseRepository->add($showCase, true);
 
             return $this->redirectToRoute('app_show_case_index', [], Response::HTTP_SEE_OTHER);
