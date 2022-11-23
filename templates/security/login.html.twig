@@ -4,9 +4,12 @@
 
 {% block body %}
 <form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    {# {% if error %}
+        <div class="alert alert-danger">
+        {{ error.messageKey|trans(error.messageData, 'security') }} 
+        ba non
+        </div>
+    {% endif %} #}
 
     {% if app.user %}
         <div class="mb-3">
@@ -31,16 +34,21 @@
 
                     <input type="hidden" name="_csrf_token"
                         value="{{ csrf_token('authenticate') }}">
-                    <button class="mt-10 text-purple-400 border-solid border-2 border-purple-400" type="submit">
+                    <button class="mt-10 mb-4 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" type="submit">
                         Connexion
                     </button>
+                    {% if error %}
+                        <div class="text-center text-red-400 mt-6">
+                        Champ de connexion non valide
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             {# {% endform %} #}
             <div class="lg:w-5/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none bg-purple-400" >
                 <div class="text-white px-4 py-6 md:p-12 md:mx-6">
                     <h4 class="text-xl font-semibold mb-6">Vous n'avez pas de compte ?</h4>
-                    <a target="_self" href="{{ path('app_register')}}" class=" w-full text-sm text-gray-50 border-solid border-2 border-gray-50">
+                    <a target="_self" href="{{ path('app_register')}}" class="mb-4 inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
                         Inscrivez-vous
                     </a>
                 </div>
