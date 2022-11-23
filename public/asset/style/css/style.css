@@ -33,3 +33,12 @@ footer{
     width: 250px;
     object-fit: cover;
 }
+.image_size_show{
+    height: 500px;
+    width: 250px;
+    object-fit: cover;
+}
+.block_image{
+    max-height: 520px;
+    min-height: 520px;
+}

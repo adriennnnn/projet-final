@@ -44,12 +44,12 @@
                      </li>
                 {% else %}
                 <li class="mx-8 mb-5 font-semibold mb-6 hover:text-purple-400 text-xl"><a href="{{ path('app_profile') }}">Profil</a></li>
-                        <li>
+                        {# <li>
                             <span>{{ app.user.userIdentifier }}</span>
-                        </li>
+                        </li> #}
                         <li class="mx-8">
                            <a target="_self" href="{{path('app_logout')}}">
-                                <span class="text-xl font-semibold mb-6 hover:text-purple-400 text-xl">deconnexion</span>
+                                <span class="text-xl font-semibold mb-6 hover:text-purple-400 text-xl">Deconnexion</span>
                             </a>
                         </li>
                 {% endif %}

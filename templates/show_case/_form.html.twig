@@ -66,9 +66,15 @@
             <br>
             {{ form_widget(form.categorys, {'attr': {'class': 'lable_company_size'}, 'list':"categories_list"}) }}    
         </div>
-        <button class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">{{ button_label|default('Save') }}</button>
+        <div class="mt-6">
+            {# <button class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400"> #}
+            <a  type="button" class="mb-4 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ button_label|default('Save') }}</a>
+            {# </button> #}
 
-        <button href="{{ path('app_show_case_index') }}" class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400">retour a la liste</button>
+            {# <button  class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400"> #}
+            <a  type="button" href="{{ path('app_show_case_index') }}" class="mb-4 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">retour a la liste </a>
+            {# </button> #}
+        </div>
     </div>
     <datalist id="categories_list">
         {% for category in categorys  %}
@@ -76,25 +82,12 @@
         {% endfor %}
     </datalist>
 
-    <div class="md:col-span-6 bg-purple-400 grid-cols-none flex content-center p-10">
-        <p class="text-white text-2xl font-semibold">ICI, vous pouvez creer<br>et parsonaliser vos vitrine </p>
+    <div class="align-middle md:col-span-6 bg-purple-400 grid-cols-none p-10">
+        <div class="">
+            <p class="text-white text-left text-2xl font-semibold">ICI, vous pouvez creer<br>et parsonaliser vos vitrine </p>
+        </div>
     </div>
 </div>
-
-
-
-
-
-    {# {{ form_row(form.companyId, {"attr": {'value': app.company.name}}
-    ) }} #}
-    {# {{ form_row(form.title, {'label':'Titre ', 'attr': {'placeholder': 'Nom de votre magasin' }}) }}
-    {{ form_row(form.description, {'label':'Description ', 'attr': {'placeholder': 'Presentation general de votre boutique'}}) }}
-    {{ form_row(form.companyId, {'label':"selection l'entreprise associer ", 'attr': {'placeholder': 'liste des entreprise inscrite'}})}}
-    {{ form_row(form.images)}}
-    {{ form_row(form.categorys)}}
-    {{ form_row(form.email, {'label':'Email '})}}
-    {{ form_row(form.phoneNumber, {'label':'Numero de téléphone ' , 'attr': {'placeholder': '0412345678', "class":"text-red-400"}})}} #}
-
 
     {# <p>{{app.user.userIdentifier}}</p>
 

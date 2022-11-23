@@ -6,30 +6,38 @@
     <div class=" py-6 mt-6 px-12">
         <h1 class=" text-2xl font-semibold whitespace-nowrap dark:text-white text-center px-0">Consulter vos fiches entreprise</h1>
     </div>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ company.id }}</td>
-            </tr>
-            <tr>
-                <th>CompanyName</th>
-                <td>{{ company.companyName }}</td>
-            </tr>
-            <tr>
-                <th>SiretNumber</th>
-                <td>{{ company.siretNumber }}</td>
-            </tr>
-            <tr>
-                <th>CompanyDescription</th>
-                <td>{{ company.companyDescription }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="grid md:grid-cols-12 m-10 ">
+        <div class="md:col-span-6 bg-white p-10">
+            <table class="table">
+                <tbody class="">
+                    <tr class="my-4">
+                        <th class="text-purple-400 text-left border-solide border-r-2 border-purple-400 pr-2">Id</th>
+                        <td class="pl-6">{{ company.id }}</td>
+                    </tr>
+                    <tr class="my-4">
+                        <th class="text-purple-400 text-left border-solide border-r-2 border-purple-400 pr-2">Nom de votre entreprise</th>
+                        <td class="pl-6">{{ company.companyName }}</td>
+                    </tr>
+                    <tr class="my-4">
+                        <th class="text-purple-400 text-left border-solide border-r-2 border-purple-400 pr-2">Numero siret</th>
+                        <td class="pl-6">{{ company.siretNumber }}</td>
+                    </tr>
+                    <tr class="my-4">
+                        <th class="text-purple-400 text-left border-solide border-r-2 border-purple-400 pr-2">Description de l'entreprise</th>
+                        <td class="pl-6">{{ company.companyDescription }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="md:col-span-6 bg-purple-400 p-10 text-center">
 
-    <a href="{{ path('app_company_index') }}">back to list</a>
+            <a type="button" class="mb-4 inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="{{ path('app_company_index') }}">Liste des entreprise</a>
+                <br>
+            <a type="button" class="mb-4 inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="{{ path('app_company_edit', {'id': company.id}) }}">Editer</a>
 
-    <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
+        </div>
+    </div>
+
 
     {{ include('company/_delete_form.html.twig') }}
 {% endblock %}

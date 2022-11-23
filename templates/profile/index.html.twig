@@ -26,11 +26,11 @@
             <div class="md:col-span-2 lg:col-span-4 p-10 bg-purple-400">
                 <div class="flex flex-col items-center text-center">
                     <h3 class="text-white">Consulter, creer ou editer vos fiche entreprise </h3>
-                    <button class='my-10 px-10 mt-10 text-white border-solid border-2 border-white'>
-                        <a href="{{ path('app_company_index')  }}">consulter</a>     
+                    {# <button class='my-10 px-10 mt-10 text-white border-solid border-2 border-white'> #}
+                        <a type="button" class="my-10 inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="{{ path('app_company_index')  }}">consulter</a>     
                         {# <a href="{{ path('app_company_index', {'id': company.id})  }}">consulter</a>              #}
                 
-                    </button>
+                    {# </button> #}
                 </div>
             </div>
                     {# ajouté une showCase / sucursalle ou boutique #}
@@ -38,9 +38,9 @@
                 <div class="flex flex-col items-center text-center">
                     {# {% if company.userId == app.user.id %} #}
                         <h3>Consulter, creer ou editer vos vitrine</h3>
-                        <button class=' my-10 px-10 mt-10 text-purple-400 border-solid border-2 border-purple-400'>
-                            <a href="{{ path('app_show_case_index')  }}">consulter</a>             
-                        </button>
+                        {# <button class=' my-10 px-10 mt-10 text-purple-400 border-solid border-2 border-purple-400'> #}
+                            <a type="button" class="my-10 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="{{ path('app_show_case_index')  }}">consulter</a>             
+                        {# </button> #}
                     {# {% else %}
                         <h3>Pour consulter, creer ou editer vos vitrine/sucursalle vous devez d'abore creer une companie/entreprise</h3>
                         <button class=' my-10 px-10 mt-10 text-purple-400 border-solid border-2 border-purple-400'>

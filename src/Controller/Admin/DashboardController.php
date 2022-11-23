@@ -41,7 +41,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         // yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
-        yield  MenuItem::linkToRoute('Logout', 'fa-solid fa-right-to-bracket mr-2 fa-beat-fade', 'app_homepage');
+        yield  MenuItem::linkToRoute('quitter l\'admin', 'fa-solid fa-right-to-bracket mr-2 fa-beat-fade', 'app_homepage');
 
         yield MenuItem::subMenu('Categorie', 'fas fa-list')->setSubItems([
             MenuItem::LinkToCrud('Toute les categorie', 'fas fa-list',  Category::class),
