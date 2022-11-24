@@ -13,6 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,15 +32,28 @@ class ShowCaseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('title', TextType::class, [
+                'required' => true,
+            ])
             ->add('description', TextareaType::class, [
-                'attr' => ['class' => 'tinymce'],]
-                )
-            ->add('email')
-            ->add('phoneNumber')
-            ->add('address')
+                'attr' => ['class' => 'tinymce'],
+                'required' => true,
+                ]
+            )
+            ->add('email', EmailType::class, [
+                'required' => true,
+
+            ])
+            ->add('phoneNumber', TextType::class,[
+                'required' => true,
+                'attr' => ['maxlength' => 15],
+            ])
+            ->add('address', TextType::class,[
+                'required' => true,
+            ])
             ->add('categorys', CategoryType::class,[
-                'data_class' => null
+                'data_class' => null,
+                'required' => true,
             ])        
             // ->add('company', EntityType::class, [
             //     'class' => User::class,
@@ -60,13 +74,15 @@ class ShowCaseType extends AbstractType
                         ->andWhere('c.userId = :user')
                         ->setParameter('user', $this->security->getUser());
                 },
+                'required' => true,
+
             ]
             )   
             ->add('images', FileType::class, [
                 // 'lable' => false,  //on enleve le lable pour ne pas marquer image mais ca ne marche pas
                 'multiple' => true,
                 'mapped' => false, // pour ne pas le lier a la bdd
-                'required' => false, // pour le rendre obligatoire
+                'required' => true, // pour le rendre obligatoire
             ] )
         ;
     }

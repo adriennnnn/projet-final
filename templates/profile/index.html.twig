@@ -16,16 +16,16 @@
             <div class="md:col-span-2 lg:col-span-4 p-10">
                 {# page header #}
                 <div class="">
-                    <h1 class="text-xl font-semibold mb-6">Vous etes sur votre profil</h1>
-                    <p class="">Dans cette section vous pouvez retrouver vos différant entreprise et leurs pages vitrine associer</p>
+                    <h1 class="text-xl font-semibold mb-6">Vous êtes sur votre profil</h1>
+                    <p class="">Dans cette section vous pouvez retrouver vos différentes entreprises et leurs pages vitrine associées</p>
                     <br>
-                    <p>Vous etes connectez en avec l'adresse email;</p>
+                    <p>Vous êtes connecté avec l'adresse email;</p>
                     <p class="text-purple-400">{{app.user.userIdentifier}}</p>
                 </div>
             </div>
             <div class="md:col-span-2 lg:col-span-4 p-10 bg-purple-400">
                 <div class="flex flex-col items-center text-center">
-                    <h3 class="text-white">Consulter, creer ou editer vos fiche entreprise </h3>
+                    <h3 class="text-white">Consultez, créez ou éditez vos fiches entreprises </h3>
                     {# <button class='my-10 px-10 mt-10 text-white border-solid border-2 border-white'> #}
                         <a type="button" class="my-10 inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="{{ path('app_company_index')  }}">consulter</a>     
                         {# <a href="{{ path('app_company_index', {'id': company.id})  }}">consulter</a>              #}
@@ -37,7 +37,7 @@
             <div class="lg:col-span-4 p-10 align-middle">
                 <div class="flex flex-col items-center text-center">
                     {# {% if company.userId == app.user.id %} #}
-                        <h3>Consulter, creer ou editer vos vitrine</h3>
+                        <h3>Consultez, créez ou éditez vos vitrines</h3>
                         {# <button class=' my-10 px-10 mt-10 text-purple-400 border-solid border-2 border-purple-400'> #}
                             <a type="button" class="my-10 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="{{ path('app_show_case_index')  }}">consulter</a>             
                         {# </button> #}

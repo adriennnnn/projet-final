@@ -5,12 +5,12 @@
         <div class="grid lg:grid-cols-4">
             <div class="lg:col-span-2">
                 <div class="form-control pr-4">
-                    {{ form_label(form.title, 'Indiquer le nom de votre succursale', {'label_attr': {'class': 'foo'}}) }}
+                    {{ form_label(form.title, 'Indiquez le nom de votre succursale *') }}
                     <br>
                     {{ form_widget(form.title, {'attr': {'class': 'lable_company_size'}}) }}    
                 </div>
                 <div class="form-control pr-4 ">
-                    {{ form_label(form.companyId, 'Choisissez la compagnie associé', {'label_attr': {'class': 'foo'}}) }}
+                    {{ form_label(form.companyId, 'Choisissez la compagnie associée *') }}
                     <br>
                     {{ form_widget(form.companyId, {'attr': {'class': 'lable_company_size'}}) }}    
                 </div>
@@ -32,29 +32,29 @@
                 </div> #}
 
                 <div class="form-control pr-4 ">
-                    {{ form_label(form.images, 'choisir une image', {'label_attr': {'class': 'foo'}}) }}
+                    {{ form_label(form.images, 'Choisissez une image *') }}
                     <br>
                     {{ form_widget(form.images, {'attr': {'class': 'lable_company_size'}}) }}    
                 </div>
                 <div class="form-control pr-4">
-                    {{ form_label(form.phoneNumber, 'Téléphone de la succursale', {'label_attr': {'class': 'foo'}}) }}
+                    {{ form_label(form.phoneNumber, 'Indiquez le téléphone de la succursale *') }}
                     <br>
                     {{ form_widget(form.phoneNumber, {'attr': {'class': 'lable_company_size'}}) }}    
                 </div>
-                <div class="form-control">
-                    {{ form_label(form.address, 'Indiquer votre address', {'label_attr': {'class': 'foo'}}) }}
+                <div class="form-control pr-4">
+                    {{ form_label(form.address, 'Indiquez votre adresse *') }}
                     <br>
                     {{ form_widget(form.address, {'attr': {'class': 'lable_company_size'}}) }}    
                 </div>
             </div>
             <div class="lg:col-span-2">
                 <div class="form-control">
-                    {{ form_label(form.description, 'Description de la companie', {'label_attr': {'class': 'foo'}}) }}
+                    {{ form_label(form.description, 'Décrivez la companie *') }}
                     <br>
                     {{ form_widget(form.description, {'attr': {'class': 'lable_company_size textarea_show_case'}}) }}    
                 </div>
                 <div class="form-control">
-                    {{ form_label(form.email, 'Email de la succursale', {'label_attr': {'class': 'foo'}}) }}
+                    {{ form_label(form.email, 'Renseignez l\'email de la succursale *') }}
                     <br>
                     {{ form_widget(form.email, {'attr': {'class': 'lable_company_size'}}) }}    
                 </div>
@@ -62,17 +62,17 @@
             </div> 
         </div>
         <div class="form-control">
-            {{ form_label(form.categorys, 'Indiquer les categories', {'label_attr': {'class': 'foo'}}) }}
+            {{ form_label(form.categorys, 'Indiquez les catégories *') }}
             <br>
             {{ form_widget(form.categorys, {'attr': {'class': 'lable_company_size'}, 'list':"categories_list"}) }}    
         </div>
         <div class="mt-6">
             {# <button class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400"> #}
-            <button class="mb-4 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ button_label|default('Save') }}</button>
+            <button class="mb-4 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ button_label|default('Enregistrer') }}</button>
             {# </button> #}
 
             {# <button  class="w-full mt-10 text-purple-400 border-solid border-2 border-purple-400"> #}
-            <a  type="button" href="{{ path('app_show_case_index') }}" class="mb-4 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">retour a la liste </a>
+            <a  type="button" href="{{ path('app_show_case_index') }}" class="mb-4 inline-block px-6 py-2 border-2 border-purple-400 text-purple-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Retour à la liste </a>
             {# </button> #}
         </div>
     </div>
@@ -82,9 +82,9 @@
         {% endfor %}
     </datalist>
 
-    <div class="align-middle md:col-span-6 bg-purple-400 grid-cols-none p-10">
-        <div class="">
-            <p class="text-white text-left text-2xl font-semibold">ICI, vous pouvez creer<br>et parsonaliser vos vitrine </p>
+    <div class="flex items-center justify-center md:col-span-6 bg-purple-400 grid-cols-none p-10">
+        <div>
+            <p class="text-white text-center text-2xl font-semibold">Renseignez vos informations <br>et personnalisez vos vitrines</p>
         </div>
     </div>
 </div>
