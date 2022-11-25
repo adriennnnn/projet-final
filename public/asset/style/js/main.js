@@ -35,7 +35,7 @@ btns.forEach((btn)=>{
 })
 
 window.addEventListener("DOMContentLoaded", () =>{
-    const Burger = document.getElementById("jawad");
+    const Burger = document.getElementById("BurgerSvg");
     const Menu = document.getElementById('Menu');
 
     Burger.addEventListener("click", () =>{
