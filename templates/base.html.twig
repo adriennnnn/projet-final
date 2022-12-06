@@ -21,6 +21,47 @@
     </head>
     <body class="h-full ">
         <header class="bg-white shadow-2xl">
+            <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 py-6 px-12">
+            <div class="container flex flex-wrap items-center justify-between mx-auto ">
+                <a href="{{ path('app_homepage') }}" class="flex items-center">
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">GlobalMarket</span>
+                </a>
+                <button id="BurgerSvg" data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                </button>
+
+                {# /md:block veut dire afficher #}
+                <div id="Menu" class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul  class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-semibold md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 ">
+                    <li>
+                    <a href="{{ path('app_homepage') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-white hover:bg-purple-400 md:hover:bg-transparent md:border-0 text-xl md:hover:text-purple-400 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Accueil</a>
+                    </li>
+                    <li>
+                    <a href="{{ path('app_about') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-white hover:bg-purple-400 md:hover:bg-transparent md:border-0 text-xl md:hover:text-purple-400 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">A propos</a>
+                    </li>
+                    {% if not app.user %}
+                    <li>
+                    <a  target="_self" href="{{ path('app_login') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-white hover:bg-purple-400 md:hover:bg-transparent md:border-0 text-xl md:hover:text-purple-400 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Connexion</a>
+                    </li>
+                    <li>
+                    <a target="_self" href="{{ path('app_register') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-white hover:bg-purple-400 md:hover:bg-transparent md:border-0 text-xl md:hover:text-purple-400 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Créer un compte</a>
+                    </li>
+                                        {% else %}
+
+                    <li>
+                    <a href="{{ path('app_profile') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-white hover:bg-purple-400 md:hover:bg-transparent md:border-0 text-xl md:hover:text-purple-400 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Profil</a>
+                    </li>
+                    
+                    <li>
+                    <a target="_self" href="{{path('app_logout')}}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-white hover:bg-purple-400 md:hover:bg-transparent md:border-0 text-xl md:hover:text-purple-400 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Déconnexion</a>
+                    </li>
+                                        {% endif %}
+                </ul>
+                </div>
+            </div>
+            </nav>
+{# 
             <div class="flex justify-around items-center p-8">
                 <h1 class="text-2xl font-semibold dark:text-white ml-12">
                     <a href="{{ path('app_homepage') }}">GlobalMarket</a>
@@ -30,8 +71,8 @@
                         <span class="sr-only">Open main menu</span>
                         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
                     </button>
-                </div>
-                <ul id="Menu" class="hidden text-center p-12 md:p-0 md:flex md:justify-end gap-8">
+                </div> #}
+                {# <ul id="Menu" class="hidden text-center justify-center p-12 md:p-0 md:flex md:justify-end gap-8">
                     <li class="text-xl font-semibold hover:text-purple-400 text-xl"><a href="{{ path('app_homepage') }}">Accueil</a></li>
                     <li class="text-xl font-semibold hover:text-purple-400 text-xl"><a href="{{ path('app_about') }}">A propos</a></li>
                     {% if not app.user %}
@@ -50,14 +91,14 @@
                         {# <li>
                             <span>{{ app.user.userIdentifier }}</span>
                         </li> #}
-                        <li class="">
+                        {# <li class="">
                            <a target="_self" href="{{path('app_logout')}}">
                                 <span class="text-xl font-semibold hover:text-purple-400 text-xl">Déconnexion</span>
                             </a>
                         </li>
                     {% endif %}
                 </ul>
-           </div>
+           </div> #} 
         </header>
         {% block body %}
 
