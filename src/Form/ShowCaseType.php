@@ -70,6 +70,7 @@ class ShowCaseType extends AbstractType
             ->add('companyId', EntityType::class, [
                 'class' => Company::class,
                 'query_builder' => function (EntityRepository $er) {
+                    //constructeur de requete SQL de doctrine
                     return $er->createQueryBuilder('c')
                         ->andWhere('c.userId = :user')
                         ->setParameter('user', $this->security->getUser());

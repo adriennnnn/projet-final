@@ -6,7 +6,7 @@
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-    <div class="flex justify-center m-10">
+    <div class="lg:flex justify-center m-10">
         <div class="lg:w-4/12 flex items-center lg:rounded-l-lg rounded-l-lg bg-purple-400" >
             <div class="text-white px-4 py-6 md:p-12 md:mx-6">
                 <h2 class="text-xl font-semibold mb-6">Vous avez deja un compte ?</h2>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="lg:w-6/12 flex bg-white">
-            <div class="grid md:p-12 md:mx-6 w-full">
+            <div class="grid p-12 md:mx-6 w-full">
 
                 <h2 class="text-xl font-semibold mb-6">Inscription</h2>
 

@@ -39,6 +39,7 @@ class CategoryTransformer implements DataTransformerInterface
     {
         // $arrayOfComa = array_unique(explode(' ,',$string));
         // $truearray = array_merge($arrayOfComa, $arrayOfString);
+        //pour enlever les majuscul
         $categorysString = strtolower($categorysString);
         $cleanCategories  = array_filter(array_unique(array_map('trim',explode(",", $categorysString))));
 
@@ -49,7 +50,6 @@ class CategoryTransformer implements DataTransformerInterface
         // pour afficher ceux qui ne sont pas deja enregistrés
         $newCategories = array_diff($cleanCategories, $searchCategory);
         foreach ($newCategories as $newCategory) {
-            //pour enlever les majuscul
             $category = new Category();
             $category->setName($newCategory);
             $category->setSlug(str_replace(' ', '-', $newCategory));

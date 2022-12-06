@@ -147,9 +147,9 @@ class ShowCaseController extends AbstractController
             
             //On recupère les images transmises 
             $images = $form->get('images')->getData();
-            // on bouclz les images
+            // on boucle les images
             foreach($images as $image){
-                //pour changer le nom des ficher et eviter les doublpn
+                //pour changer le nom des ficher et eviter les doublon + on recupere l'extension du ficher
                 $ficher = md5(uniqid()) . '.' . $image->guessExtension();
                 //Pui on copier le ficher dans uploads de public(dossier)
                 $image->move(

@@ -21,8 +21,8 @@
     </head>
     <body class="h-full ">
         <header class="bg-white shadow-2xl">
-            <div class="pt-6 flex justify-between">
-                <h1 class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ml-12">
+            <div class="flex justify-around items-center p-8">
+                <h1 class="text-2xl font-semibold dark:text-white ml-12">
                     <a href="{{ path('app_homepage') }}">GlobalMarket</a>
                 </h1>
                 <div class="flex md:order-2">
@@ -31,33 +31,33 @@
                         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
                     </button>
                 </div>
-            </div>
-            <ul id="Menu" class="hidden text-center p-12 md:p-0 md:flex justify-end">
-                <li class="mx-8 mb-5 text-xl font-semibold mb-6 hover:text-purple-400 text-xl"><a href="{{ path('app_homepage') }}">Accueil</a></li>
-                <li class="mx-8 mb-5 text-xl font-semibold mb-6 hover:text-purple-400 text-xl"><a href="{{ path('app_about') }}">A propos</a></li>
-                {% if not app.user %}
-                     <li class="mx-8 mb-5">
+                <ul id="Menu" class="hidden text-center p-12 md:p-0 md:flex md:justify-end gap-8">
+                    <li class="text-xl font-semibold hover:text-purple-400 text-xl"><a href="{{ path('app_homepage') }}">Accueil</a></li>
+                    <li class="text-xl font-semibold hover:text-purple-400 text-xl"><a href="{{ path('app_about') }}">A propos</a></li>
+                    {% if not app.user %}
+                     <li class="">
                         <a target="_self" href="{{ path('app_login') }}">
-                            <span class="text-xl font-semibold mb-6 hover:text-purple-400 text-xl">Connexion</span>
+                            <span class="text-xl font-semibold hover:text-purple-400 text-xl">Connexion</span>
                         </a>
                      </li>
-                     <li class="mx-8 mb-5">
+                     <li class="">
                         <a target="_self" href="{{ path('app_register') }}">
-                            <span class="text-xl font-semibold mb-6 hover:text-purple-400 text-xl">Créer un compte</span>
+                            <span class="text-xl font-semibold hover:text-purple-400 text-xl">Créer un compte</span>
                         </a>
                      </li>
-                {% else %}
-                <li class="mx-8 mb-5 font-semibold mb-6 hover:text-purple-400 text-xl"><a href="{{ path('app_profile') }}">Profil</a></li>
+                    {% else %}
+                    <li class="font-semibold hover:text-purple-400 text-xl"><a href="{{ path('app_profile') }}">Profil</a></li>
                         {# <li>
                             <span>{{ app.user.userIdentifier }}</span>
                         </li> #}
-                        <li class="mx-8">
+                        <li class="">
                            <a target="_self" href="{{path('app_logout')}}">
-                                <span class="text-xl font-semibold mb-6 hover:text-purple-400 text-xl">Déconnexion</span>
+                                <span class="text-xl font-semibold hover:text-purple-400 text-xl">Déconnexion</span>
                             </a>
                         </li>
-                {% endif %}
-            </ul>
+                    {% endif %}
+                </ul>
+           </div>
         </header>
         {% block body %}
 

@@ -5,10 +5,10 @@
 {% block body %}
 
     {#   h-full  md:max-w-xl dark:border-gray-700 dark:bg-gray-800 flex-col items-center bg-white shadow-md md:flex-row m-24 lg:flex #}
-        <div class="flex justify-center my-10 mx-24">
+        <div class="lg:flex justify-center my-10 mx-24">
             <div class="bg-white flex grow">
 
-                <div class="w-4/12">
+                <div class="lg:w-4/12 flex-call">
                     {% if show_case.imageShowCases.values %}
                         <div class="h-full block_image lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none bg-purple-400" >
                             {# <div class="text-white px-4 py-6 md:p-12 md:mx-6"> #}
@@ -19,7 +19,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="w7/12">
+                <div class="lg:w-7/12 flex">
                     <div class="px-4 py-6 md:p-12 md:mx-6">
                         <h1 class="text-2xl font-semibold mb-6">{{ show_case.title }}</h1>
                         <p class="mb-6 text-lg font-normal font-semibold">{{ show_case.description }}</p>
